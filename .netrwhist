@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/jeremy/dev/clockwork_web/app/bundles/MemberAdminApp'
-let g:netrw_dirhist_2='/Users/jeremy/dev/clockwork_web'
-let g:netrw_dirhist_3='/Users/jeremy/dev/clockwork_web/app'
-let g:netrw_dirhist_4='/Users/jeremy/dev/clockwork_web/app/helpers'
-let g:netrw_dirhist_5='/Users/jeremy/dev/clockwork_web'
-let g:netrw_dirhist_6='/Users/jeremy/dev/clockwork_web/app'
-let g:netrw_dirhist_7='/Users/jeremy/dev/clockwork_web/app/models'

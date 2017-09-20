@@ -1,0 +1,3 @@
+[submodule "pack/jmarquis/start/ctrlp"]
+	path = pack/jmarquis/start/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim

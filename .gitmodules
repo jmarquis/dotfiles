@@ -13,3 +13,6 @@
 [submodule "pack/jmarquis/start/vim-fugitive"]
 	path = pack/jmarquis/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "pack/jmarquis/start/ale"]
+	path = pack/jmarquis/start/ale
+	url = https://github.com/w0rp/ale.git

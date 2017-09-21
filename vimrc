@@ -36,3 +36,5 @@ highlight CursorLine cterm=NONE ctermbg=darkgray
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
+let g:jsx_ext_required = 0
+

@@ -17,6 +17,9 @@ set number
 highlight LineNr ctermfg=darkgrey
 set showmatch
 
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
 " delete all trailing space
 autocmd BufWritePre * :%s/\s\+$//e
 

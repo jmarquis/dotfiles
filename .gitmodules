@@ -4,3 +4,9 @@
 [submodule "pack/jmarquis/start/vim-airline"]
 	path = pack/jmarquis/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+[submodule "pack/jmarquis/start/vim-airline-themes"]
+	path = pack/jmarquis/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "pack/jmarquis/start/vim-gitgutter"]
+	path = pack/jmarquis/start/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter

@@ -1,6 +1,6 @@
 [submodule "pack/jmarquis/start/ctrlp"]
 	path = pack/jmarquis/start/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim
-[submodule "pack/jmarquis/start/lightline"]
-	path = pack/jmarquis/start/lightline
-	url = https://github.com/itchyny/lightline.vim
+[submodule "pack/jmarquis/start/vim-airline"]
+	path = pack/jmarquis/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git

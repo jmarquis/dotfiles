@@ -8,7 +8,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
-" colorscheme predawn
+colorscheme jellybeans
 set smartindent
 set autoindent
 set nowrap

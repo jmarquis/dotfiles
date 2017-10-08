@@ -56,3 +56,10 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 set list
 
 let g:indent_guides_enable_on_vim_startup = 1
+
+function! AirlineInit()
+  let g:airline_section_y = airline#section#create(['filetype'])
+  let g:airline_section_x = ""
+endfunction
+
+autocmd User AirlineAfterInit call AirlineInit()

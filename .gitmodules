@@ -19,3 +19,6 @@
 [submodule "vim/pack/jmarquis/start/vim-javascript"]
 	path = vim/pack/jmarquis/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/pack/jmarquis/start/vim-indent-guides"]
+	path = vim/pack/jmarquis/start/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git

@@ -52,3 +52,8 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" show invisibles
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+set list
+
+let g:indent_guides_enable_on_vim_startup = 1

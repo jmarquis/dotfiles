@@ -1,18 +1,18 @@
-[submodule "pack/jmarquis/start/ctrlp"]
-	path = pack/jmarquis/start/ctrlp
+[submodule "vim/pack/jmarquis/start/ctrlp"]
+	path = vim/pack/jmarquis/start/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim
-[submodule "pack/jmarquis/start/vim-airline"]
-	path = pack/jmarquis/start/vim-airline
+[submodule "vim/pack/jmarquis/start/vim-airline"]
+	path = vim/pack/jmarquis/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
-[submodule "pack/jmarquis/start/vim-airline-themes"]
-	path = pack/jmarquis/start/vim-airline-themes
+[submodule "vim/pack/jmarquis/start/vim-airline-themes"]
+	path = vim/pack/jmarquis/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "pack/jmarquis/start/vim-gitgutter"]
-	path = pack/jmarquis/start/vim-gitgutter
+[submodule "vim/pack/jmarquis/start/vim-gitgutter"]
+	path = vim/pack/jmarquis/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "pack/jmarquis/start/vim-fugitive"]
-	path = pack/jmarquis/start/vim-fugitive
+[submodule "vim/pack/jmarquis/start/vim-fugitive"]
+	path = vim/pack/jmarquis/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "pack/jmarquis/start/ale"]
-	path = pack/jmarquis/start/ale
+[submodule "vim/pack/jmarquis/start/ale"]
+	path = vim/pack/jmarquis/start/ale
 	url = https://github.com/w0rp/ale.git

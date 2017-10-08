@@ -16,3 +16,6 @@
 [submodule "vim/pack/jmarquis/start/ale"]
 	path = vim/pack/jmarquis/start/ale
 	url = https://github.com/w0rp/ale.git
+[submodule "vim/pack/jmarquis/start/vim-javascript"]
+	path = vim/pack/jmarquis/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git

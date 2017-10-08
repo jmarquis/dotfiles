@@ -1,3 +1,6 @@
+set runtimepath^=~/dotfiles/vim
+set packpath^=~/dotfiles/vim
+
 set clipboard=unnamed
 
 set tabstop=2

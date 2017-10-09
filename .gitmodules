@@ -31,3 +31,6 @@
 [submodule "vim/pack/jmarquis/start/nerdtree"]
 	path = vim/pack/jmarquis/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/pack/jmarquis/start/vim-diminactive"]
+	path = vim/pack/jmarquis/start/vim-diminactive
+	url = https://github.com/blueyed/vim-diminactive.git

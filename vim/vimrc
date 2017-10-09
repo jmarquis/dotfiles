@@ -85,3 +85,4 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 nnoremap <C-g> :NERDTreeToggle<Enter>
 
+let g:diminactive_enable_focus = 1

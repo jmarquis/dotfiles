@@ -28,3 +28,6 @@
 [submodule "vim/pack/jmarquis/start/vim-jsx"]
 	path = vim/pack/jmarquis/start/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
+[submodule "vim/pack/jmarquis/start/nerdtree"]
+	path = vim/pack/jmarquis/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git

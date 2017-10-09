@@ -22,3 +22,6 @@
 [submodule "vim/pack/jmarquis/start/vim-indent-guides"]
 	path = vim/pack/jmarquis/start/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vim/pack/jmarquis/start/tender"]
+	path = vim/pack/jmarquis/start/tender
+	url = https://github.com/jacoborus/tender.vim

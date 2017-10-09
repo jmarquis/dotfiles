@@ -15,7 +15,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
-colorscheme solarized8_dark_high
+colorscheme tender
 set smartindent
 set autoindent
 set nowrap
@@ -25,7 +25,7 @@ highlight LineNr ctermfg=darkgrey
 " set showmatch
 
 set laststatus=2
-let g:airline_theme='powerlineish'
+let g:airline_theme='tender'
 
 " delete all trailing space
 autocmd BufWritePre * :%s/\s\+$//e
@@ -69,5 +69,5 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 set backspace=indent,eol,start
 
 set guioptions=
-set guifont=Menlo:h10
+set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h10
 set termguicolors

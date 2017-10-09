@@ -25,6 +25,7 @@ highlight LineNr ctermfg=darkgrey
 " set showmatch
 
 set laststatus=2
+let g:airline_powerline_fonts = 1
 let g:airline_theme='tender'
 
 " delete all trailing space
@@ -71,3 +72,7 @@ set backspace=indent,eol,start
 set guioptions=
 set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h10
 set termguicolors
+
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd guibg=#242424
+hi IndentGuidesEven guibg=#2c2c2c

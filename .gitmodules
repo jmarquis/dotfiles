@@ -25,3 +25,6 @@
 [submodule "vim/pack/jmarquis/start/tender"]
 	path = vim/pack/jmarquis/start/tender
 	url = https://github.com/jacoborus/tender.vim
+[submodule "vim/pack/jmarquis/start/vim-jsx"]
+	path = vim/pack/jmarquis/start/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git

@@ -31,3 +31,6 @@
 [submodule "vim/pack/jmarquis/start/vim-diminactive"]
 	path = vim/pack/jmarquis/start/vim-diminactive
 	url = https://github.com/blueyed/vim-diminactive.git
+[submodule "vim/pack/jmarquis/start/indentLine"]
+	path = vim/pack/jmarquis/start/indentLine
+	url = https://github.com/Yggdroot/indentLine.git

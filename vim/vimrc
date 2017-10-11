@@ -30,7 +30,7 @@ set smartcase
 set smarttab
 
 set laststatus=2
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:airline_theme='tender'
 
 " delete all trailing space
@@ -73,11 +73,13 @@ let g:ctrlp_max_depth=40
 set backspace=indent,eol,start
 
 set guioptions=
-set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h10
+set guifont=Monaco:h10
 set termguicolors
 
 let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
 nnoremap <C-g> :NERDTreeToggle<Enter>
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 
 let g:diminactive_enable_focus = 1
+let g:indentLine_char = '|'

@@ -6,6 +6,8 @@ set packpath^=~/dotfiles/vim
 
 set clipboard=unnamed
 
+set hidden
+
 set t_Co=256
 set background=dark
 

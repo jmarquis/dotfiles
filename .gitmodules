@@ -28,3 +28,6 @@
 [submodule "vim/pack/jmarquis/start/fzf"]
 	path = vim/pack/jmarquis/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/pack/jmarquis/start/vim-polyglot"]
+	path = vim/pack/jmarquis/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git

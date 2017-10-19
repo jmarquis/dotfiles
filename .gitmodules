@@ -31,3 +31,6 @@
 [submodule "vim/pack/jmarquis/start/indentLine"]
 	path = vim/pack/jmarquis/start/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "vim/pack/jmarquis/start/fzf"]
+	path = vim/pack/jmarquis/start/fzf
+	url = https://github.com/junegunn/fzf.vim.git

@@ -61,7 +61,7 @@ set splitbelow
 set splitright
 
 " show invisibles
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+set listchars=eol:¬,tab:>·,extends:>,precedes:<
 set list
 
 function! AirlineInit()
@@ -71,9 +71,8 @@ endfunction
 
 autocmd User AirlineAfterInit call AirlineInit()
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
+set tags=./.tags
+let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclude=vendor -f .tags"
 
 set backspace=indent,eol,start
 
@@ -87,7 +86,7 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
 let g:diminactive_enable_focus = 1
-let g:indentLine_char = '|'
+let g:indentLine_char = '⎸'
 
 set rtp+=/usr/local/opt/fzf
 
@@ -103,3 +102,14 @@ inoremap <special> <Esc> <Esc>hl
 
 " don't blink the cursor
 set guicursor+=i:blinkwait0
+
+" Needed for tmux and vim to play nice
+
+nnoremap <silent> <ESC>OA <UP>
+nnoremap <silent> <ESC>OB <DOWN>
+nnoremap <silent> <ESC>OC <RIGHT>
+nnoremap <silent> <ESC>OD <LEFT>
+inoremap <silent> <ESC>OA <UP>
+inoremap <silent> <ESC>OB <DOWN>
+inoremap <silent> <ESC>OC <RIGHT>
+inoremap <silent> <ESC>OD <LEFT>

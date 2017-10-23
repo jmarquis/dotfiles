@@ -31,3 +31,6 @@
 [submodule "vim/pack/jmarquis/start/vim-polyglot"]
 	path = vim/pack/jmarquis/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "vim/pack/jmarquis/start/youcompleteme"]
+	path = vim/pack/jmarquis/start/youcompleteme
+	url = https://github.com/valloric/youcompleteme.git

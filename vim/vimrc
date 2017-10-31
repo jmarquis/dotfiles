@@ -118,5 +118,5 @@ inoremap <silent> <ESC>OC <RIGHT>
 inoremap <silent> <ESC>OD <LEFT>
 
 let g:ale_linters = {
-\ 'javascript': ['eslint']
+\ 'ruby': []
 \}

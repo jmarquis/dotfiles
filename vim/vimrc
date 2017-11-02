@@ -30,6 +30,7 @@ set showmatch
 set ignorecase
 set smartcase
 set smarttab
+set autoread " auto refresh files when changes are made outside of vim
 
 set laststatus=2
 let g:airline_theme='tender'
@@ -65,8 +66,10 @@ set listchars=eol:¬,tab:>·,extends:>,precedes:<
 set list
 
 function! AirlineInit()
-  let g:airline_section_y = airline#section#create(['filetype'])
+  let g:airline_section_y = ""
   let g:airline_section_x = ""
+  let g:airline_section_z = g:airline_section_b
+  let g:airline_section_b = ""
 endfunction
 
 autocmd User AirlineAfterInit call AirlineInit()
@@ -120,3 +123,6 @@ inoremap <silent> <ESC>OD <LEFT>
 let g:ale_linters = {
 \ 'ruby': []
 \}
+
+set ttimeout
+set ttimeoutlen=50

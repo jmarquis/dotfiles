@@ -40,3 +40,6 @@
 [submodule "vim/pack/jmarquis/start/vim-material"]
 	path = vim/pack/jmarquis/start/vim-material
 	url = https://github.com/hzchirs/vim-material
+[submodule "vim/pack/jmarquis/start/auto-pairs"]
+	path = vim/pack/jmarquis/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs

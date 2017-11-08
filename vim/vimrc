@@ -19,7 +19,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
-colorscheme tender
+colorscheme base16-tomorrow-night
 set smartindent
 set autoindent
 set nowrap
@@ -64,6 +64,8 @@ set splitright
 " show invisibles
 set listchars=eol:¬,tab:>·,extends:>,precedes:<
 set list
+hi NonText ctermfg=16
+hi SpecialKey ctermfg=16
 
 function! AirlineInit()
   let g:airline_section_y = ""
@@ -126,3 +128,5 @@ let g:ale_linters = {
 
 set ttimeout
 set ttimeoutlen=50
+
+highlight link xmlEndTag xmlTag

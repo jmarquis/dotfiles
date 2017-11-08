@@ -34,3 +34,9 @@
 [submodule "vim/pack/jmarquis/start/youcompleteme"]
 	path = vim/pack/jmarquis/start/youcompleteme
 	url = https://github.com/valloric/youcompleteme.git
+[submodule "vim/pack/jmarquis/start/base16-vim"]
+	path = vim/pack/jmarquis/start/base16-vim
+	url = https://github.com/chriskempson/base16-vim
+[submodule "vim/pack/jmarquis/start/vim-material"]
+	path = vim/pack/jmarquis/start/vim-material
+	url = https://github.com/hzchirs/vim-material

@@ -56,6 +56,7 @@ nnoremap <C-T> :Files<CR>
 nnoremap <C-P> :Files<CR>
 nnoremap ; :Buffers<CR>
 nnoremap ' :Tags<Enter>
+nnoremap , :BTags<Enter>
 
 " better split opening
 set splitbelow
@@ -130,3 +131,4 @@ set ttimeout
 set ttimeoutlen=50
 
 highlight link xmlEndTag xmlTag
+set ttymouse=sgr

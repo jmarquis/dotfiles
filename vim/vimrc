@@ -10,6 +10,7 @@ set hidden
 
 set t_Co=256
 set background=dark
+let base16colorspace=256
 
 set tabstop=2
 set softtabstop=2
@@ -19,7 +20,7 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
-colorscheme base16-tomorrow-night
+colorscheme gruvbox
 set smartindent
 set autoindent
 set nowrap
@@ -83,7 +84,7 @@ let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclu
 set backspace=indent,eol,start
 
 set guioptions=
-set guifont=Monaco:h10
+set guifont=Menlo:h10
 set termguicolors
 
 let NERDTreeMinimalUI = 1

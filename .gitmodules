@@ -19,9 +19,6 @@
 [submodule "vim/pack/jmarquis/start/nerdtree"]
 	path = vim/pack/jmarquis/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/pack/jmarquis/start/vim-diminactive"]
-	path = vim/pack/jmarquis/start/vim-diminactive
-	url = https://github.com/blueyed/vim-diminactive.git
 [submodule "vim/pack/jmarquis/start/indentLine"]
 	path = vim/pack/jmarquis/start/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
@@ -43,3 +40,6 @@
 [submodule "vim/pack/jmarquis/start/auto-pairs"]
 	path = vim/pack/jmarquis/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
+[submodule "vim/pack/jmarquis/start/gruvbox"]
+	path = vim/pack/jmarquis/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

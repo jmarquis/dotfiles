@@ -20,7 +20,8 @@ filetype on
 filetype plugin on
 filetype indent on
 syntax on
-colorscheme gruvbox
+set termguicolors
+colorscheme afterglow
 set smartindent
 set autoindent
 set nowrap
@@ -34,7 +35,7 @@ set smarttab
 set autoread " auto refresh files when changes are made outside of vim
 
 set laststatus=2
-let g:airline_theme='tender'
+let g:airline_theme='afterglow'
 
 " delete all trailing space on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -84,8 +85,7 @@ let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclu
 set backspace=indent,eol,start
 
 set guioptions=
-set guifont=Menlo:h10
-set termguicolors
+set guifont=Monaco:h10
 
 let NERDTreeMinimalUI = 1
 nnoremap <C-g> :NERDTreeToggle<Enter>

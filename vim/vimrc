@@ -21,7 +21,7 @@ filetype plugin on
 filetype indent on
 syntax on
 set termguicolors
-colorscheme afterglow
+colorscheme base16-default-dark
 set smartindent
 set autoindent
 set nowrap
@@ -35,7 +35,7 @@ set smarttab
 set autoread " auto refresh files when changes are made outside of vim
 
 set laststatus=2
-let g:airline_theme='afterglow'
+let g:airline_theme='base16'
 
 " delete all trailing space on save
 autocmd BufWritePre * :%s/\s\+$//e

@@ -134,3 +134,5 @@ set ttimeoutlen=50
 
 highlight link xmlEndTag xmlTag
 set ttymouse=sgr
+
+let g:ackprg = 'rg --vimgrep'

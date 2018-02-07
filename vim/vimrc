@@ -4,8 +4,6 @@ set regexpengine=1
 set runtimepath^=~/dotfiles/vim
 set packpath^=~/dotfiles/vim
 
-set clipboard=unnamed
-
 set hidden
 
 set t_Co=256

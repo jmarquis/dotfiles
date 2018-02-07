@@ -49,3 +49,6 @@
 [submodule "vim/pack/jmarquis/start/ack.vim"]
 	path = vim/pack/jmarquis/start/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/pack/jmarquis/start/vim-prettier"]
+	path = vim/pack/jmarquis/start/vim-prettier
+	url = https://github.com/prettier/vim-prettier

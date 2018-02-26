@@ -16,9 +16,6 @@
 [submodule "vim/pack/jmarquis/start/nerdtree"]
 	path = vim/pack/jmarquis/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/pack/jmarquis/start/indentLine"]
-	path = vim/pack/jmarquis/start/indentLine
-	url = https://github.com/Yggdroot/indentLine.git
 [submodule "vim/pack/jmarquis/start/fzf"]
 	path = vim/pack/jmarquis/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
@@ -52,3 +49,6 @@
 [submodule "vim/pack/jmarquis/start/vim-prettier"]
 	path = vim/pack/jmarquis/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier
+[submodule "vim/pack/jmarquis/start/vim-indent-guides"]
+	path = vim/pack/jmarquis/start/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides

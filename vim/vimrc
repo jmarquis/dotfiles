@@ -42,7 +42,6 @@ set mouse=a " enables the mouse
 set history=1000 " more undo'ing
 set incsearch " incrementally search/highlight as you're typing
 set scrolloff=5 " start scrolling when the cursor is five lines away from the edge of screen
-set cursorline " highlight the entire line that your cursor is on
 
 let g:jsx_ext_required = 0
 let g:netrw_banner=0
@@ -90,8 +89,21 @@ nnoremap <C-g> :NERDTreeToggle<Enter>
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 
-let g:diminactive_enable_focus = 1
-let g:indentLine_char = '⎸'
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#282828 ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#323232 ctermbg=darkgrey
+
+" cursorline only for active window
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
+autocmd InsertEnter * highlight CursorLine guibg=#334433 ctermbg=darkgrey
+autocmd InsertLeave * highlight CursorLine guibg=#282828 ctermbg=darkgrey
 
 set rtp+=/usr/local/opt/fzf
 

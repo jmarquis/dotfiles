@@ -41,6 +41,10 @@ elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
   # dependencies
   brew install cmake
 
+  # git
+  ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
+  ln -s ~/dotfiles/git/gitignore ~/.gitignore
+
   # fish
   ln -s ~/dotfiles/fish ~/.config/fish
 

@@ -1,0 +1,16 @@
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[user]
+	name = Jeremy Marquis
+	email = jeremy@jeremymarquis.com
+[alias]
+	co = checkout
+	p = pull
+	s = status
+	b = branch
+	bs = branch --sort=-committerdate --column
+[core]
+	excludesfile = /Users/jeremy/.gitignore

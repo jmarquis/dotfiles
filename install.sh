@@ -86,6 +86,7 @@ elif [ "$1" == "apps" ]; then # install apps
   mas install 512617038 # snappy
   mas install 411643860 # daisydisk
   mas install 904280696 # things 3
+  mas install 668208984 # giphy capture
 
 elif [ "$1" == "personal-apps" ]; then # install apps for personal use
 

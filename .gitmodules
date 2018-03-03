@@ -52,3 +52,6 @@
 [submodule "vim/pack/jmarquis/start/vim-indent-guides"]
 	path = vim/pack/jmarquis/start/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule "vim/pack/jmarquis/start/vim-plugin-autosess"]
+	path = vim/pack/jmarquis/start/vim-plugin-autosess
+	url = https://github.com/powerman/vim-plugin-autosess

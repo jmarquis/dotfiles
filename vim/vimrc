@@ -11,6 +11,7 @@ set background=dark
 set termguicolors
 let base16colorspace=256
 colorscheme base16-default-dark
+let g:airline_theme='base16'
 
 set tabstop=2
 set softtabstop=2
@@ -32,7 +33,6 @@ set smarttab
 set autoread " auto refresh files when changes are made outside of vim
 
 set laststatus=2
-let g:airline_theme='base16'
 
 " delete all trailing space on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -101,12 +101,12 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-autocmd InsertEnter * highlight CursorLine guibg=#334433 ctermbg=22
+autocmd InsertEnter * highlight CursorLine guibg=#334433
 autocmd InsertLeave * highlight CursorLine guibg=#282828 ctermbg=235
 
 set rtp+=/usr/local/opt/fzf
 
-if !has("gui_running")
+if !has("nvim") && !has("gui_running")
 
   " set the cursor to a vertical line in insert mode and a solid block
   " in command mode

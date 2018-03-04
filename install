@@ -29,6 +29,10 @@ if [ "$1" == "env" ]; then # set up environment
   curl -L https://get.oh-my.fish | fish
   omf install pure
 
+  # fzf and ripgrep
+  brew install fzf
+  brew install ripgrep
+
 elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
 
   echo "Installing dotfiles..."

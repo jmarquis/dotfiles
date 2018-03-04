@@ -6,9 +6,11 @@ set packpath^=~/dotfiles/vim
 
 set hidden
 
-set t_Co=256
+syntax on
 set background=dark
+set termguicolors
 let base16colorspace=256
+colorscheme base16-default-dark
 
 set tabstop=2
 set softtabstop=2
@@ -17,9 +19,6 @@ set expandtab
 filetype on
 filetype plugin on
 filetype indent on
-syntax on
-set termguicolors
-colorscheme base16-default-dark
 set smartindent
 set autoindent
 set nowrap
@@ -92,8 +91,8 @@ let g:NERDTreeDirArrowCollapsible = '-'
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#282828 ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#323232 ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#282828 ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#323232 ctermbg=236
 
 " cursorline only for active window
 augroup CursorLine
@@ -102,8 +101,8 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-autocmd InsertEnter * highlight CursorLine guibg=#334433 ctermbg=darkgrey
-autocmd InsertLeave * highlight CursorLine guibg=#282828 ctermbg=darkgrey
+autocmd InsertEnter * highlight CursorLine guibg=#334433 ctermbg=22
+autocmd InsertLeave * highlight CursorLine guibg=#282828 ctermbg=235
 
 set rtp+=/usr/local/opt/fzf
 
@@ -143,6 +142,5 @@ set ttimeout
 set ttimeoutlen=50
 
 highlight link xmlEndTag xmlTag
-set ttymouse=sgr
 
 let g:ackprg = 'rg --vimgrep'

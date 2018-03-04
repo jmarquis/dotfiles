@@ -12,6 +12,24 @@ set termguicolors
 let base16colorspace=256
 colorscheme tender
 let g:airline_theme='tender'
+hi Normal guibg=#282a36
+
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#373a4a ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#2f3240 ctermbg=234
+
+" cursorline only for active window
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
+hi CursorLine guibg=#13141a
+autocmd InsertEnter * highlight CursorLine guibg=#040405
+autocmd InsertLeave * highlight CursorLine guibg=#13141a ctermbg=235
 
 set tabstop=2
 set softtabstop=2
@@ -87,23 +105,6 @@ let NERDTreeMinimalUI = 1
 nnoremap <C-g> :NERDTreeToggle<Enter>
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
-
-" indent guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#343434 ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#2d2d2d ctermbg=234
-
-" cursorline only for active window
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
-
-hi CursorLine guibg=#1a1a1a
-autocmd InsertEnter * highlight CursorLine guibg=#000000
-autocmd InsertLeave * highlight CursorLine guibg=#1a1a1a ctermbg=235
 
 set rtp+=/usr/local/opt/fzf
 

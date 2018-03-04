@@ -46,6 +46,3 @@
 [submodule "vim/pack/jmarquis/start/vim-plugin-autosess"]
 	path = vim/pack/jmarquis/start/vim-plugin-autosess
 	url = https://github.com/powerman/vim-plugin-autosess
-[submodule "vim/pack/jmarquis/start/tender"]
-	path = vim/pack/jmarquis/start/tender
-	url = https://github.com/jacoborus/tender.vim

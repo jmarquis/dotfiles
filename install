@@ -17,8 +17,8 @@ if [ "$1" == "env" ]; then # set up environment
   # node
   brew install node
 
-  # vim
-  brew install vim --with-override-system-vi
+  # nvim
+  brew install nvim
 
   # fish
   brew install fish
@@ -54,7 +54,9 @@ elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
   # base16-shell
   ln -s ~/dotfiles/base16-shell ~/.config/base16-shell
 
-  # vim
+  # nvim
+  mkdir -p ~/.config/nvim
+  ln -s ~/dotfiles/vim/vimrc ~/.config/nvim/init.vim
   ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 
   # youcompleteme

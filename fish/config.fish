@@ -1,3 +1,6 @@
+alias vi="nvim"
+alias vim="nvim"
+
 if type -q rvm
   rvm default
 end

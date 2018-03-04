@@ -92,7 +92,7 @@ let g:NERDTreeDirArrowCollapsible = '-'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#282828 ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#323232 ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#202020 ctermbg=234
 
 " cursorline only for active window
 augroup CursorLine

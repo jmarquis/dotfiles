@@ -37,9 +37,6 @@
 [submodule "vim/pack/jmarquis/start/gruvbox"]
 	path = vim/pack/jmarquis/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
-[submodule "vim/pack/jmarquis/start/afterglow"]
-	path = vim/pack/jmarquis/start/afterglow
-	url = https://github.com/danilo-augusto/vim-afterglow
 [submodule "base16-shell"]
 	path = base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
@@ -55,3 +52,6 @@
 [submodule "vim/pack/jmarquis/start/vim-plugin-autosess"]
 	path = vim/pack/jmarquis/start/vim-plugin-autosess
 	url = https://github.com/powerman/vim-plugin-autosess
+[submodule "vim/pack/jmarquis/start/tender"]
+	path = vim/pack/jmarquis/start/tender
+	url = https://github.com/jacoborus/tender.vim

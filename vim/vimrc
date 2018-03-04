@@ -10,8 +10,8 @@ syntax on
 set background=dark
 set termguicolors
 let base16colorspace=256
-colorscheme base16-default-dark
-let g:airline_theme='base16'
+colorscheme tender
+let g:airline_theme='tender'
 
 set tabstop=2
 set softtabstop=2
@@ -91,8 +91,8 @@ let g:NERDTreeDirArrowCollapsible = '-'
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#282828 ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#202020 ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#343434 ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#2d2d2d ctermbg=234
 
 " cursorline only for active window
 augroup CursorLine
@@ -101,8 +101,9 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-autocmd InsertEnter * highlight CursorLine guibg=#334433
-autocmd InsertLeave * highlight CursorLine guibg=#282828 ctermbg=235
+hi CursorLine guibg=#1a1a1a
+autocmd InsertEnter * highlight CursorLine guibg=#000000
+autocmd InsertLeave * highlight CursorLine guibg=#1a1a1a ctermbg=235
 
 set rtp+=/usr/local/opt/fzf
 

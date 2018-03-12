@@ -49,3 +49,6 @@
 [submodule "vim/pack/jmarquis/start/tender"]
 	path = vim/pack/jmarquis/start/tender
 	url = https://github.com/jmarquis/tender.vim
+[submodule "vim/pack/jmarquis/start/vim-rhubarb"]
+	path = vim/pack/jmarquis/start/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb

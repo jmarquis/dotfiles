@@ -19,6 +19,7 @@ if [ "$1" == "env" ]; then # set up environment
 
   # nvim
   brew install nvim
+  pip2 install --upgrade neovim
 
   # fish
   brew install fish

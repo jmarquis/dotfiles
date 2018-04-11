@@ -135,10 +135,6 @@ inoremap <silent> <ESC>OB <DOWN>
 inoremap <silent> <ESC>OC <RIGHT>
 inoremap <silent> <ESC>OD <LEFT>
 
-let g:ale_linters = {
-\ 'ruby': []
-\}
-
 set timeoutlen=50
 set ttimeout
 set ttimeoutlen=50
@@ -146,3 +142,7 @@ set ttimeoutlen=50
 highlight link xmlEndTag xmlTag
 
 let g:ackprg = 'rg --vimgrep'
+
+let g:ale_linters = {
+\  'ruby': ['rubocop']
+\}

@@ -12,5 +12,6 @@
 	s = status
 	b = branch
 	bs = branch --sort=-committerdate --column
+	c = commit
 [core]
 	excludesfile = /Users/jeremy/.gitignore

@@ -67,6 +67,9 @@ elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
   # youcompleteme
   cd ~/dotfiles/vim/pack/jmarquis/start/youcompleteme && ./install.py --js-completer
 
+  # tern
+  ln -s ~/dotfiles/tern/tern-project ~/.tern-project
+
 elif [ "$1" == "apps" ]; then # install apps
 
   echo "Installing apps..."

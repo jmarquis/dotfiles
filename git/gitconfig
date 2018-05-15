@@ -13,5 +13,6 @@
 	b = branch
 	bs = branch --sort=-committerdate --column
 	c = commit
+	d = diff
 [core]
 	excludesfile = /Users/jeremy/.gitignore

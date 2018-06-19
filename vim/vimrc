@@ -17,6 +17,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'powerman/vim-plugin-autosess', { 'tag': '*' }
 Plug 'sheerun/vim-polyglot', { 'tag': '*' }
 Plug 'tpope/vim-rhubarb'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
@@ -210,5 +212,8 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 " close nerdtree on exit so it isn't saved in the session
 autocmd VimLeave * NERDTreeClose
 
-" ycm fix for python
-let g:ycm_path_to_python_interpreter="/usr/local/bin/python2"
+" enable deoplete
+let g:deoplete#enable_at_startup = 1
+
+" use tab for deoplete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"

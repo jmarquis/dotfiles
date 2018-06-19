@@ -14,12 +14,15 @@ if [ "$1" == "env" ]; then # set up environment
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew tap caskroom/cask
 
+  # python
+  brew install python
+
   # node
   brew install node
 
   # nvim
   brew install nvim
-  pip2 install --upgrade neovim
+  pip3 install --upgrade neovim
 
   # fish
   brew install fish

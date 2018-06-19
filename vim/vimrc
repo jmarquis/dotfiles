@@ -119,7 +119,7 @@ autocmd User AirlineAfterInit call AirlineInit()
 set backspace=indent,eol,start
 
 " gui stuff
-set guioptions=
+set guioptions=M
 set guifont=Monaco:h10
 
 " simplify the nerdtree UI

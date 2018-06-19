@@ -56,16 +56,13 @@ elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
   # oh my fish
   ln -s ~/dotfiles/omf ~/.config/omf
 
-  # base16-shell
-  ln -s ~/dotfiles/base16-shell ~/.config/base16-shell
-
   # nvim
   mkdir -p ~/.config/nvim
   ln -s ~/dotfiles/vim/vimrc ~/.config/nvim/init.vim
   ln -s ~/dotfiles/vim/vimrc ~/.vimrc
 
-  # youcompleteme
-  cd ~/dotfiles/vim/pack/jmarquis/start/youcompleteme && ./install.py --js-completer
+  # vim-plug
+  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   # tern
   ln -s ~/dotfiles/tern/tern-project ~/.tern-project

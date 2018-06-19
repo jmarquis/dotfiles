@@ -1,8 +1,24 @@
 set nocompatible
 
-" path setup
-set runtimepath^=~/dotfiles/vim
-set packpath^=~/dotfiles/vim
+call plug#begin('~/.vim/plugged')
+
+" track tags on plugins that use them
+Plug 'mileszs/ack.vim', { 'tag': '*' }
+Plug 'w0rp/ale', { 'tag': '*' }
+Plug 'jiangmiao/auto-pairs', { 'tag': '*' }
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jmarquis/tender.vim' " fork to fix some color stuff
+Plug 'vim-airline/vim-airline', { 'tag': '*' }
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive', { 'tag': '*' }
+Plug 'airblade/vim-gitgutter'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'powerman/vim-plugin-autosess', { 'tag': '*' }
+Plug 'sheerun/vim-polyglot', { 'tag': '*' }
+Plug 'tpope/vim-rhubarb'
+
+call plug#end()
 
 " don't close buffers when switching
 set hidden
@@ -193,3 +209,6 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 " close nerdtree on exit so it isn't saved in the session
 autocmd VimLeave * NERDTreeClose
+
+" ycm fix for python
+let g:ycm_path_to_python_interpreter="/usr/local/bin/python2"

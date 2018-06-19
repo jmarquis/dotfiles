@@ -1,11 +1,13 @@
 set nocompatible
 
-set regexpengine=1
+" path setup
 set runtimepath^=~/dotfiles/vim
 set packpath^=~/dotfiles/vim
 
+" don't close buffers when switching
 set hidden
 
+" colorscheme setup
 syntax on
 set background=dark
 set termguicolors
@@ -27,10 +29,15 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+" fancy cursorline colors per mode
 hi CursorLine guibg=#13141a
 autocmd InsertEnter * highlight CursorLine guibg=#040405
 autocmd InsertLeave * highlight CursorLine guibg=#13141a ctermbg=235
 
+" use newer regex engine
+set regexpengine=1
+
+" basic editing/navigation preferences
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -48,33 +55,47 @@ set showmatch
 set ignorecase
 set smartcase
 set smarttab
-set autoread " auto refresh files when changes are made outside of vim
 
+" auto refresh files when changes are made outside of vim
+set autoread
+
+" always show status line
 set laststatus=2
 
 " delete all trailing space on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-set mouse=a " enables the mouse
-set history=1000 " more undo'ing
-set incsearch " incrementally search/highlight as you're typing
-set scrolloff=5 " start scrolling when the cursor is five lines away from the edge of screen
+" enables the mouse
+set mouse=a
 
+" more undo'ing
+set history=1000
+
+" incrementally search/highlight as you're typing
+set incsearch
+
+" start scrolling when the cursor is five lines away from the edge of screen
+set scrolloff=5
+
+" don't require .jsx extension to highlight jsx files
 let g:jsx_ext_required = 0
-let g:netrw_banner=0
 
-" better split navigation
+" better split navigation bindings
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <C-T> :Files<CR>
-nnoremap <C-P> :Files<CR>
+
+" bindings for fuzzy file finder
+nnoremap <C-t> :Files<CR>
+nnoremap <C-p> :Files<CR>
+
+" bindings for buffers and tags
 nnoremap ; :Buffers<CR>
 nnoremap ' :Tags<Enter>
 nnoremap , :BTags<Enter>
 
-" better split opening
+" more intuitive split opening
 set splitbelow
 set splitright
 
@@ -84,6 +105,7 @@ set list
 hi NonText ctermfg=16
 hi SpecialKey ctermfg=16
 
+" simplify airline UI
 function! AirlineInit()
   let g:airline_section_y = ""
   let g:airline_section_x = ""
@@ -93,21 +115,27 @@ endfunction
 
 autocmd User AirlineAfterInit call AirlineInit()
 
-set tags=.tags;
-let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclude=vendor -f .tags"
-
+" backspace past the beginning of the line
 set backspace=indent,eol,start
 
+" gui stuff
 set guioptions=
 set guifont=Monaco:h10
 
+" simplify the nerdtree UI
 let NERDTreeMinimalUI = 1
-nnoremap <C-g> :NERDTreeToggle<Enter>
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
 
+" open nerdtree with C-g
+nnoremap <C-g> :NERDTreeToggle<Enter>
+
+" make fzf accessible to vim
 set rtp+=/usr/local/opt/fzf
 
+" set up fzf to generate tags
+set tags=.tags;
+let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclude=vendor -f .tags"
+
+" nvim and gvim have this stuff built in already
 if !has("nvim") && !has("gui_running")
 
   " set the cursor to a vertical line in insert mode and a solid block
@@ -135,14 +163,18 @@ inoremap <silent> <ESC>OB <DOWN>
 inoremap <silent> <ESC>OC <RIGHT>
 inoremap <silent> <ESC>OD <LEFT>
 
+" fix for exiting insert mode faster
 set timeoutlen=50
 set ttimeout
 set ttimeoutlen=50
 
+" fix for a weird JSX bug
 highlight link xmlEndTag xmlTag
 
+" use ripgrep for ack.vim
 let g:ackprg = 'rg --vimgrep'
 
+" disable built-in ruby linter because it kills the CPU
 let g:ale_linters = {
 \  'ruby': ['rubocop']
 \}
@@ -159,5 +191,5 @@ inoremap ˚ <Esc>:m .-2<CR>==gi
 vnoremap ∆ :m '>+1<CR>gv=gv
 vnoremap ˚ :m '<-2<CR>gv=gv
 
-" close nerdtree on exit
+" close nerdtree on exit so it isn't saved in the session
 autocmd VimLeave * NERDTreeClose

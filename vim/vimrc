@@ -217,3 +217,6 @@ let g:deoplete#enable_at_startup = 1
 
 " use tab for deoplete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" live refactoring
+set inccommand=nosplit

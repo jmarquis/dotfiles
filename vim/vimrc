@@ -18,6 +18,7 @@ Plug 'powerman/vim-plugin-autosess', { 'tag': '*' }
 Plug 'sheerun/vim-polyglot', { 'tag': '*' }
 Plug 'tpope/vim-rhubarb'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdcommenter', { 'tag': '*' }
 
 call plug#end()
 
@@ -110,7 +111,7 @@ nnoremap <C-p> :Files<CR>
 " bindings for buffers and tags
 nnoremap ; :Buffers<CR>
 nnoremap ' :Tags<Enter>
-nnoremap , :BTags<Enter>
+nnoremap " :BTags<Enter>
 
 " more intuitive split opening
 set splitbelow
@@ -210,3 +211,8 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 " close nerdtree on exit so it isn't saved in the session
 autocmd VimLeave * NERDTreeClose
+
+" NERDCommenter mappings + settings
+nmap <C-_> <Plug>NERDCommenterToggle
+vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
+let g:NERDSpaceDelims = 1

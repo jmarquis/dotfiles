@@ -19,6 +19,7 @@ Plug 'sheerun/vim-polyglot', { 'tag': '*' }
 Plug 'tpope/vim-rhubarb'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter', { 'tag': '*' }
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 
@@ -30,15 +31,16 @@ syntax on
 set background=dark
 set termguicolors
 let base16colorspace=256
-colorscheme nord
-let g:airline_theme = 'nord'
+let ayucolor = "dark"
+colorscheme ayu
+let g:airline_theme = 'ayu_mirage'
 let g:nord_comment_brightness = 12
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#343a47 ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#3a404f ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#171f26 ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#1c252e ctermbg=234
 
 " cursorline only for active window
 augroup CursorLine
@@ -48,9 +50,9 @@ augroup CursorLine
 augroup END
 
 " fancy cursorline colors per mode
-hi CursorLine guibg=#1c1f26
-autocmd InsertEnter * highlight CursorLine guibg=#040405
-autocmd InsertLeave * highlight CursorLine guibg=#1c1f26 ctermbg=235
+hi CursorLine guibg=#171f26
+autocmd InsertEnter * highlight CursorLine guibg=#000000
+autocmd InsertLeave * highlight CursorLine guibg=#171f26 ctermbg=235
 
 " use newer regex engine
 set regexpengine=1
@@ -186,7 +188,8 @@ set ttimeout
 set ttimeoutlen=50
 
 " fix for a weird JSX bug
-highlight link xmlEndTag xmlTag
+hi link xmlEndTag xmlTag
+hi link htmlEndTag htmlTag
 
 " use ripgrep for ack.vim
 let g:ackprg = 'rg --vimgrep'

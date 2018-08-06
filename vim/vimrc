@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs', { 'tag': '*' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jmarquis/tender.vim' " fork to fix some color stuff
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline', { 'tag': '*' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive', { 'tag': '*' }
@@ -30,15 +31,15 @@ syntax on
 set background=dark
 set termguicolors
 let base16colorspace=256
-colorscheme tender
-let g:airline_theme='tender'
-hi Normal guibg=#282a36
+colorscheme gruvbox
+let g:airline_theme = 'gruvbox'
+let g:gruvbox_contrast_dark = 'hard'
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#373a4a ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#2f3240 ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030 ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#202020 ctermbg=234
 
 " cursorline only for active window
 augroup CursorLine
@@ -48,9 +49,9 @@ augroup CursorLine
 augroup END
 
 " fancy cursorline colors per mode
-hi CursorLine guibg=#13141a
-autocmd InsertEnter * highlight CursorLine guibg=#040405
-autocmd InsertLeave * highlight CursorLine guibg=#13141a ctermbg=235
+hi CursorLine guibg=#151515
+autocmd InsertEnter * highlight CursorLine guibg=#050505
+autocmd InsertLeave * highlight CursorLine guibg=#151515 ctermbg=235
 
 " use newer regex engine
 set regexpengine=1
@@ -120,8 +121,8 @@ set splitright
 " show invisibles
 set listchars=eol:¬,tab:>·,extends:>,precedes:<
 set list
-hi NonText ctermfg=16
-hi SpecialKey ctermfg=16
+hi NonText ctermfg=7 guifg=#444444
+hi SpecialKey ctermfg=7 guifg=#444444
 
 " simplify airline UI
 function! AirlineInit()

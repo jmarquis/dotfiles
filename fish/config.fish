@@ -6,8 +6,6 @@ if type -q rvm
   rvm default
 end
 
-set -g fish_user_paths "/usr/local/opt/mysql@5.6/bin" $fish_user_paths
-
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...
 # --hidden: Search hidden files and folders

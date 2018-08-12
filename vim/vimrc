@@ -17,7 +17,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'powerman/vim-plugin-autosess', { 'tag': '*' }
 Plug 'sheerun/vim-polyglot', { 'tag': '*' }
 Plug 'tpope/vim-rhubarb'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter', { 'tag': '*' }
 Plug 'ayu-theme/ayu-vim'
 

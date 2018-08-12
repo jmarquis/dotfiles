@@ -54,7 +54,7 @@ elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
   ln -s ~/dotfiles/git/gitignore ~/.gitignore
 
   # fish
-  ln -s ~/dotfiles/fish ~/.config/fish
+  ln -s ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 
   # oh my fish
   ln -s ~/dotfiles/omf ~/.config/omf

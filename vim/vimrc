@@ -146,6 +146,9 @@ let NERDTreeMinimalUI = 1
 " open nerdtree with C-g
 nnoremap <C-g> :NERDTreeToggle<Enter>
 
+" show hidden files in nerdtree
+let NERDTreeShowHidden=1
+
 " make fzf accessible to vim
 set rtp+=/usr/local/opt/fzf
 

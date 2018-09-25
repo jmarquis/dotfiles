@@ -7,6 +7,12 @@ if type -q rvm
   rvm default
 end
 
+if type -q rbenv
+  set PATH $HOME/.rbenv/bin $PATH
+  set PATH $HOME/.rbenv/shims $PATH
+  rbenv rehash >/dev/null ^&1
+end
+
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...
 # --hidden: Search hidden files and folders

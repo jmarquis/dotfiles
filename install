@@ -42,7 +42,7 @@ elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
   echo "Installing dotfiles..."
 
   # init
-  cd ~/dotfiles
+  cd ~/dev/dotfiles
   git submodule update --init --recursive
   mkdir -p ~/.config
 
@@ -50,25 +50,25 @@ elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
   brew install cmake
 
   # git
-  ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
-  ln -s ~/dotfiles/git/gitignore ~/.gitignore
+  ln -s ~/dev/dotfiles/git/gitconfig ~/.gitconfig
+  ln -s ~/dev/dotfiles/git/gitignore ~/.gitignore
 
   # fish
-  ln -s ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+  ln -s ~/dev/dotfiles/fish/config.fish ~/.config/fish/config.fish
 
   # oh my fish
-  ln -s ~/dotfiles/omf ~/.config/omf
+  ln -s ~/dev/dotfiles/omf ~/.config/omf
 
   # nvim
   mkdir -p ~/.config/nvim
-  ln -s ~/dotfiles/vim/vimrc ~/.config/nvim/init.vim
-  ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+  ln -s ~/dev/dotfiles/vim/vimrc ~/.config/nvim/init.vim
+  ln -s ~/dev/dotfiles/vim/vimrc ~/.vimrc
 
   # vim-plug
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   # tern
-  ln -s ~/dotfiles/tern/tern-project ~/.tern-project
+  ln -s ~/dev/dotfiles/tern/tern-project ~/.tern-project
 
 elif [ "$1" == "apps" ]; then # install apps
 

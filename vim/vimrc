@@ -97,6 +97,10 @@ set scrolloff=5
 " don't require .jsx extension to highlight jsx files
 let g:jsx_ext_required = 0
 
+" navigate visual lines
+nnoremap j gj
+nnoremap k gk
+
 " better split navigation bindings
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>

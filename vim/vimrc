@@ -128,8 +128,8 @@ hi SpecialKey ctermfg=7 guifg=#434c5d
 
 " simplify airline UI
 function! AirlineInit()
-  let g:airline_section_y = ""
-  let g:airline_section_x = ""
+  let g:airline_section_y = "%{fugitive#head()}"
+  let g:airline_section_x = "%4l/%L"
   let g:airline_section_z = g:airline_section_b
   let g:airline_section_b = ""
 endfunction

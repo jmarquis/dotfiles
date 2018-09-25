@@ -33,7 +33,6 @@ let base16colorspace=256
 let ayucolor = "dark"
 colorscheme ayu
 let g:airline_theme = 'ayu_mirage'
-let g:nord_comment_brightness = 12
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1

@@ -37,6 +37,9 @@ if [ "$1" == "env" ]; then # set up environment
   brew install fzf
   brew install ripgrep
 
+  # gist
+  brew install gist
+
 elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
 
   echo "Installing dotfiles..."

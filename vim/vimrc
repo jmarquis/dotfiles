@@ -188,7 +188,7 @@ inoremap <silent> <ESC>OC <RIGHT>
 inoremap <silent> <ESC>OD <LEFT>
 
 " fix for exiting insert mode faster
-set timeoutlen=50
+set timeoutlen=500
 set ttimeout
 set ttimeoutlen=50
 
@@ -232,3 +232,8 @@ let g:NERDSpaceDelims = 1
 "
 " live refactoring
 set inccommand=nosplit
+
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprevious<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [Q :cfirst<CR>

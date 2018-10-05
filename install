@@ -40,6 +40,9 @@ if [ "$1" == "env" ]; then # set up environment
   # gist
   brew install gist
 
+  # ctags
+  brew install ctags
+
 elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
 
   echo "Installing dotfiles..."

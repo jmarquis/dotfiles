@@ -188,7 +188,7 @@ inoremap <silent> <ESC>OC <RIGHT>
 inoremap <silent> <ESC>OD <LEFT>
 
 " fix for exiting insert mode faster
-set timeoutlen=500
+set timeoutlen=0
 set ttimeout
 set ttimeoutlen=50
 
@@ -229,11 +229,11 @@ autocmd VimLeave * NERDTreeClose
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 let g:NERDSpaceDelims = 1
-"
+
 " live refactoring
 set inccommand=nosplit
 
-nnoremap ]q :cnext<CR>
-nnoremap [q :cprevious<CR>
+nnoremap ) :cnext<CR>
+nnoremap ( :cprevious<CR>
 nnoremap ]Q :clast<CR>
 nnoremap [Q :cfirst<CR>

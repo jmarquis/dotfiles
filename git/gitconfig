@@ -14,5 +14,8 @@
 	bs = branch --sort=-committerdate --column
 	c = commit
 	d = diff
+	a = add
 [core]
 	excludesfile = /Users/jeremy/.gitignore
+[push]
+	default = current

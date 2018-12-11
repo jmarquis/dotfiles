@@ -19,6 +19,7 @@ Plug 'sheerun/vim-polyglot', { 'tag': '*' }
 Plug 'tpope/vim-rhubarb'
 Plug 'scrooloose/nerdcommenter', { 'tag': '*' }
 Plug 'ayu-theme/ayu-vim'
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 

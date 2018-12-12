@@ -19,6 +19,9 @@ Plug 'sheerun/vim-polyglot', { 'tag': '*' }
 Plug 'tpope/vim-rhubarb'
 Plug 'scrooloose/nerdcommenter', { 'tag': '*' }
 Plug 'ayu-theme/ayu-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-endwise'
+Plug 'alvan/vim-closetag'
 
 call plug#end()
 
@@ -188,7 +191,7 @@ inoremap <silent> <ESC>OC <RIGHT>
 inoremap <silent> <ESC>OD <LEFT>
 
 " fix for exiting insert mode faster
-set timeoutlen=500
+set timeoutlen=0
 set ttimeout
 set ttimeoutlen=50
 
@@ -229,11 +232,14 @@ autocmd VimLeave * NERDTreeClose
 nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 let g:NERDSpaceDelims = 1
-"
+
 " live refactoring
 set inccommand=nosplit
 
-nnoremap ]q :cnext<CR>
-nnoremap [q :cprevious<CR>
-nnoremap ]Q :clast<CR>
-nnoremap [Q :cfirst<CR>
+nnoremap ) :cnext<CR>
+nnoremap ( :cprevious<CR>
+
+let g:closetag_filenames = '*.html,*.erb,*.jsx,*.js'
+let g:closetag_xhtml_filenames = '*.jsx,*.js'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_shortcut = '>'

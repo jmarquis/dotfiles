@@ -16,3 +16,5 @@
 	d = diff
 [core]
 	excludesfile = /Users/jeremy/.gitignore
+[push]
+	default = current

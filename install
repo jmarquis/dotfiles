@@ -1,11 +1,14 @@
 #!/bin/bash
 
 # installation script for various things
-# for a fresh machine, do the steps in order: env, dotfiles, apps
+# for a fresh machine, do the steps in order: base, apps, personal-apps (optional)
 
-if [ "$1" == "env" ]; then # set up environment
+if [ "$1" == "base" ]; then # set up environment
 
   echo "Setting up base environment..."
+
+  cd ~/dev/dotfiles
+  mkdir -p ~/.config
 
   # apple developer tools
   xcode-select --install
@@ -18,20 +21,36 @@ if [ "$1" == "env" ]; then # set up environment
   brew install python
 
   # node
-  brew install node
+  brew install n
+  n 10
 
-  # nvim
-  brew install nvim
-  pip3 install --upgrade neovim
+  # cmake (dependency for other stuff)
+  brew install cmake
+
+  # git configs
+  ln -s ~/dev/dotfiles/git/gitconfig ~/.gitconfig
+  ln -s ~/dev/dotfiles/git/gitignore ~/.gitignore
 
   # fish
   brew install fish
   echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
   chsh -s /usr/local/bin/fish
+  ln -s ~/dev/dotfiles/fish/config.fish ~/.config/fish/config.fish
+  ln -s ~/dev/dotfiles/fish/fishfile ~/.config/fish/fishfile
 
-  # oh my fish
-  curl -L https://get.oh-my.fish | fish
-  omf install pure
+  # fisher
+  curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+  fisher
+
+  # nvim
+  brew install nvim
+  pip3 install --upgrade neovim
+  mkdir -p ~/.config/nvim
+  ln -s ~/dev/dotfiles/vim/vimrc ~/.config/nvim/init.vim
+  ln -s ~/dev/dotfiles/vim/vimrc ~/.vimrc
+
+  # vim-plug
+  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   # fzf and ripgrep
   brew install fzf
@@ -42,36 +61,6 @@ if [ "$1" == "env" ]; then # set up environment
 
   # ctags
   brew install ctags
-
-elif [ "$1" == "dotfiles" ]; then # install & symlink dotfiles
-
-  echo "Installing dotfiles..."
-
-  # init
-  cd ~/dev/dotfiles
-  git submodule update --init --recursive
-  mkdir -p ~/.config
-
-  # dependencies
-  brew install cmake
-
-  # git
-  ln -s ~/dev/dotfiles/git/gitconfig ~/.gitconfig
-  ln -s ~/dev/dotfiles/git/gitignore ~/.gitignore
-
-  # fish
-  ln -s ~/dev/dotfiles/fish/config.fish ~/.config/fish/config.fish
-
-  # oh my fish
-  ln -s ~/dev/dotfiles/omf ~/.config/omf
-
-  # nvim
-  mkdir -p ~/.config/nvim
-  ln -s ~/dev/dotfiles/vim/vimrc ~/.config/nvim/init.vim
-  ln -s ~/dev/dotfiles/vim/vimrc ~/.vimrc
-
-  # vim-plug
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   # tern
   ln -s ~/dev/dotfiles/tern/tern-project ~/.tern-project
@@ -112,6 +101,6 @@ elif [ "$1" == "personal-apps" ]; then # install apps for personal use
 
 else
 
-  echo "Available options: env, dotfiles, apps"
+  echo "Available options: base, apps, personal-apps"
 
 fi

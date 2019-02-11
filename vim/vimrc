@@ -116,8 +116,8 @@ nnoremap <C-p> :Files<CR>
 
 " bindings for buffers and tags
 nnoremap ; :Buffers<CR>
-nnoremap ' :Tags<Enter>
-nnoremap " :BTags<Enter>
+nnoremap " :Tags<Enter>
+nnoremap ' :BTags<Enter>
 
 " more intuitive split opening
 set splitbelow

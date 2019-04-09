@@ -2,6 +2,7 @@ export EDITOR=nvim
 alias vi="nvim"
 alias vim="nvim"
 alias gist="gist -c -p"
+alias g="git"
 
 if type -q rvm
   rvm default

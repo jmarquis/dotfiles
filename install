@@ -22,7 +22,7 @@ if [ "$1" == "base" ]; then # set up environment
 
   # node
   brew install n
-  n 10
+  n latest
 
   # cmake (dependency for other stuff)
   brew install cmake
@@ -75,7 +75,6 @@ elif [ "$1" == "apps" ]; then # install apps
   brew cask install istat-menus
   brew cask install dropshare
   brew cask install slack
-  brew cask install github
   brew cask install yakyak
   brew cask install sip
 
@@ -86,7 +85,6 @@ elif [ "$1" == "apps" ]; then # install apps
   mas install 1263070803 # lungo
   mas install 975937182 # fantastical 2
   mas install 1017470484 # next meeting
-  mas install 1053031090 # boxy
   mas install 512617038 # snappy
   mas install 904280696 # things 3
   mas install 668208984 # giphy capture

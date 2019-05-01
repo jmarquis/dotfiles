@@ -22,3 +22,4 @@ end
 set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 
 set pure_symbol_prompt "➜"
+set pure_color_prompt_on_success (set_color green)

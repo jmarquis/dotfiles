@@ -1,21 +1,23 @@
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 [user]
-	name = Jeremy Marquis
-	email = jeremy@jeremymarquis.com
+  name = Jeremy Marquis
+  email = jmarquis@etsy.com
 [alias]
-	co = checkout
-	p = pull
-	s = status
-	b = branch
-	bs = branch --sort=-committerdate --column
-	c = commit
-	d = diff
-	a = add
+  co = checkout
+  p = pull --rebase --stat
+  s = status
+  b = branch
+  bs = branch --sort=-committerdate --column
+  c = commit
+  d = diff
+  a = add
+  rpull = pull --rebase --stat
 [core]
-	excludesfile = /Users/jeremy/.gitignore
+  excludesfile = /Users/jeremy/.gitignore
+  preloadindex = true
 [push]
-	default = current
+  default = current

@@ -5,7 +5,7 @@
   clean = git-lfs clean -- %f
 [user]
   name = Jeremy Marquis
-  email = jmarquis@etsy.com
+  email = jeremy@jeremymarquis.com
 [alias]
   co = checkout
   p = pull --rebase --stat

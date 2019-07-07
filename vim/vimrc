@@ -91,6 +91,7 @@ set showmatch
 set ignorecase
 set smartcase
 set smarttab
+set noshowmode
 
 " php
 autocmd FileType php setl iskeyword+=$
@@ -115,6 +116,7 @@ set incsearch
 
 " start scrolling when the cursor is five lines away from the edge of screen
 set scrolloff=5
+set sidescrolloff=5
 
 " don't require .jsx extension to highlight jsx files
 let g:jsx_ext_required = 0
@@ -185,7 +187,12 @@ inoremap <silent> <ESC>OD <LEFT>
 set timeout
 set timeoutlen=1000
 set ttimeout
-set ttimeoutlen=50
+set ttimeoutlen=10
+augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+augroup END
 
 " live refactoring
 set inccommand=nosplit
@@ -237,6 +244,9 @@ let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclu
 
 " use ripgrep for ack.vim
 let g:ackprg = 'rg --vimgrep'
+
+" don't open first result when ack-ing
+cnoreabbrev Ack Ack!
 
 " disable built-in ruby linter because it kills the CPU
 let g:ale_linters = {
@@ -305,6 +315,7 @@ let g:coc_snippet_prev = '<S-TAB>'
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <leader>gd :call CocAction('jumpDefinition', 'sp')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)

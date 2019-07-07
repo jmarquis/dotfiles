@@ -135,11 +135,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-t> :Files<CR>
 nnoremap <C-p> :Files<CR>
 
-" bindings for buffers and tags
-nnoremap ; :Buffers<CR>
-nnoremap " :Tags<Enter>
-nnoremap ' :BTags<Enter>
-
 " more intuitive split opening
 set splitbelow
 set splitright
@@ -241,6 +236,14 @@ set rtp+=/usr/local/opt/fzf
 " set up fzf to generate tags
 set tags=.tags;
 let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclude=vendor -f .tags"
+
+" fzf bindings for buffers and tags
+nnoremap ; :Buffers<CR>
+nnoremap " :Tags<Enter>
+nnoremap ' :BTags<Enter>
+
+" find file (advanced version of gf)
+nmap <silent> <leader>gf :call fzf#vim#files('.', {'options': '-q '.shellescape(expand('<cfile>'))})<CR>
 
 " use ripgrep for ack.vim
 let g:ackprg = 'rg --vimgrep'

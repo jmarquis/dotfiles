@@ -17,7 +17,7 @@
   a = add
   rpull = pull --rebase --stat
 [core]
-  excludesfile = /Users/jeremy/.gitignore
+  excludesfile = ~/.gitignore
   preloadindex = true
 [push]
   default = current

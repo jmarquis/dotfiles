@@ -52,7 +52,6 @@ let mapleader=","
 syntax on
 set background=dark
 set termguicolors
-let base16colorspace=256
 let ayucolor = "dark"
 colorscheme ayu
 
@@ -279,7 +278,7 @@ let g:lightline = {
             \ 'active': {
             \   'left': [
             \     ['mode', 'paste'],
-            \     ['filename', 'modified'],
+            \     ['filename'],
             \     ['rodeo']
             \   ],
             \   'right': [
@@ -301,8 +300,17 @@ let g:lightline = {
             \   'gitbranch': '%{fugitive#head()}',
             \   'linepos': '%4l/%L',
             \   'rodeo': '%{rodeo#statusline()}'
-            \  }
+            \  },
+            \ 'component_function': {
+            \   'filename': 'LightlineFilename'
             \ }
+            \ }
+
+function! LightlineFilename()
+  let filename = expand('%:f') !=# '' ? expand('%:f') : '[No Name]'
+  let modified = &modified ? ' *' : ''
+  return filename . modified
+endfunction
 
 source $HOME/.config/nvim/ayu-lightline.vim
 

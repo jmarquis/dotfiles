@@ -278,8 +278,7 @@ let g:lightline = {
             \ 'active': {
             \   'left': [
             \     ['mode', 'paste'],
-            \     ['filename'],
-            \     ['rodeo']
+            \     ['filename']
             \   ],
             \   'right': [
             \     ['linepos'],
@@ -298,8 +297,7 @@ let g:lightline = {
             \ },
             \ 'component': {
             \   'gitbranch': '%{fugitive#head()}',
-            \   'linepos': '%4l/%L',
-            \   'rodeo': '%{rodeo#statusline()}'
+            \   'linepos': '%4l/%L'
             \  },
             \ 'component_function': {
             \   'filename': 'LightlineFilename'

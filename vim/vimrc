@@ -298,7 +298,7 @@ let g:lightline = {
             \ 'component': {
             \   'gitbranch': '%{fugitive#head()}',
             \   'linepos': '%4l/%L'
-            \  },
+            \ },
             \ 'component_function': {
             \   'filename': 'LightlineFilename'
             \ }

@@ -1,4 +1,3 @@
-export TERM=xterm-256color
 export EDITOR=nvim
 alias vi="nvim"
 alias vim="nvim"

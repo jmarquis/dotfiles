@@ -8,8 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 
 " UI
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -25,6 +24,7 @@ Plug 'powerman/vim-plugin-autosess'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
 " Plug 'jiangmiao/auto-pairs' " using coc-pairs for now
 " Plug 'tpope/vim-endwise'
 " Plug 'alvan/vim-closetag'
@@ -55,7 +55,6 @@ set termguicolors
 let base16colorspace=256
 let ayucolor = "dark"
 colorscheme ayu
-let g:airline_theme = 'ayu_mirage'
 
 " let the terminal set the bg
 " this lets active windows have a different bgcolor
@@ -274,14 +273,38 @@ nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 let g:NERDSpaceDelims = 1
 
-" simplify airline UI
-function! AirlineInit()
-  let g:airline_section_y = "%{fugitive#head()}"
-  let g:airline_section_x = "%4l/%L"
-  let g:airline_section_z = ""
-  let g:airline_section_b = ""
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+let g:lightline = {
+            \ 'colorscheme': 'ayu_custom',
+            \ 'subseparator': { 'left': '' },
+            \ 'active': {
+            \   'left': [
+            \     ['mode', 'paste'],
+            \     ['filename', 'modified'],
+            \     ['rodeo']
+            \   ],
+            \   'right': [
+            \     ['linepos'],
+            \     ['gitbranch']
+            \   ]
+            \ },
+            \ 'inactive': {
+            \   'left': [
+            \     [],
+            \     ['filename']
+            \   ],
+            \   'right': [
+            \     [],
+            \     ['linepos']
+            \   ]
+            \ },
+            \ 'component': {
+            \   'gitbranch': '%{fugitive#head()}',
+            \   'linepos': '%4l/%L',
+            \   'rodeo': '%{rodeo#statusline()}'
+            \  }
+            \ }
+
+source $HOME/.config/nvim/ayu-lightline.vim
 
 " closetag settings
 let g:closetag_filenames = '*.html,*.erb,*.jsx,*.js'

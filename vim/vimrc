@@ -9,7 +9,7 @@ Plug 'scrooloose/nerdtree'
 
 " UI
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'jmarquis/vim-airline-ayu-custom'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-navigator'

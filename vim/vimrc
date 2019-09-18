@@ -273,6 +273,26 @@ nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 let g:NERDSpaceDelims = 1
 
+function! Readonly()
+    let output = airline#util#wrap(airline#parts#readonly(),0)
+    if output == ""
+        return ""
+    endif
+    return "   " . output
+endfunction
+
+" simplify airline UI
+function! AirlineInit()
+  let g:airline_section_b = "%<%<%{airline#extensions#fugitiveline#bufname()}%m%#__accent_red#%{Readonly()}%#__restore__#"
+  let g:airline_section_c = ""
+  let g:airline_section_x = "%{fugitive#head()}"
+  let g:airline_section_y = "%l/%L"
+  let g:airline_section_z = ""
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
+let g:airline_theme = 'ayu_custom'
+
 let g:lightline = {
             \ 'colorscheme': 'ayu_custom',
             \ 'subseparator': { 'left': '' },

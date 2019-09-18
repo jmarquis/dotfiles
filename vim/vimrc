@@ -8,7 +8,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 
 " UI
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -310,8 +311,6 @@ function! LightlineFilename()
   return filename . modified
 endfunction
 
-source $HOME/.config/nvim/ayu-lightline.vim
-
 " closetag settings
 let g:closetag_filenames = '*.html,*.erb,*.jsx,*.js'
 let g:closetag_xhtml_filenames = '*.jsx,*.js'
@@ -351,6 +350,8 @@ nmap <silent> <leader>gd :call CocAction('jumpDefinition', 'sp')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

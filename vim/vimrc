@@ -293,44 +293,6 @@ autocmd User AirlineAfterInit call AirlineInit()
 
 let g:airline_theme = 'ayu_custom'
 
-let g:lightline = {
-            \ 'colorscheme': 'ayu_custom',
-            \ 'subseparator': { 'left': '' },
-            \ 'active': {
-            \   'left': [
-            \     ['mode', 'paste'],
-            \     ['filename']
-            \   ],
-            \   'right': [
-            \     ['linepos'],
-            \     ['gitbranch']
-            \   ]
-            \ },
-            \ 'inactive': {
-            \   'left': [
-            \     [],
-            \     ['filename']
-            \   ],
-            \   'right': [
-            \     [],
-            \     ['linepos']
-            \   ]
-            \ },
-            \ 'component': {
-            \   'gitbranch': '%{fugitive#head()}',
-            \   'linepos': '%4l/%L'
-            \ },
-            \ 'component_function': {
-            \   'filename': 'LightlineFilename'
-            \ }
-            \ }
-
-function! LightlineFilename()
-  let filename = expand('%:f') !=# '' ? expand('%:f') : '[No Name]'
-  let modified = &modified ? ' *' : ''
-  return filename . modified
-endfunction
-
 " closetag settings
 let g:closetag_filenames = '*.html,*.erb,*.jsx,*.js'
 let g:closetag_xhtml_filenames = '*.jsx,*.js'

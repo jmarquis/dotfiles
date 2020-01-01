@@ -2,3 +2,4 @@
 *.swp
 *.sql.gz
 *.vim
+.DS_Store

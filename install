@@ -53,9 +53,6 @@ if [ "$1" == "base" ]; then # set up environment
   ln -s ~/dev/dotfiles/vim/vimrc ~/.config/nvim/init.vim
   ln -s ~/dev/dotfiles/vim/vimrc ~/.vimrc
 
-  # vim-plug
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
   # fzf and ripgrep
   brew install fzf
   brew install ripgrep
@@ -81,6 +78,10 @@ elif [ "$1" == "apps" ]; then # install apps
   brew cask install slack
   brew cask install yakyak
   brew cask install sip
+  brew cask install daisydisk
+  brew cask install sketch
+  brew cask install virtualbox
+  brew cask install adobe-creative-cloud
 
   # mac app store cli
   brew install mas
@@ -92,6 +93,8 @@ elif [ "$1" == "apps" ]; then # install apps
   mas install 512617038 # snappy
   mas install 904280696 # things 3
   mas install 668208984 # giphy capture
+  mas install 1091189122 # bear
+  mas install 1320666476 # wipr
 
 elif [ "$1" == "personal-apps" ]; then # install apps for personal use
 

@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 
 " project/folder navigation
 Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 
@@ -26,16 +27,17 @@ Plug 'tpope/vim-fugitive' " git bindings
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rhubarb' " github bindings
 
+" editing
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tweekmonster/wstrip.vim' " strips whitespace
+Plug 'jiangmiao/auto-pairs'
+
 " misc
 Plug 'w0rp/ale'
 Plug 'powerman/vim-plugin-autosess'
-Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/nerdcommenter'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-surround'
-" Plug 'jiangmiao/auto-pairs' " using coc-pairs for now
-" Plug 'tpope/vim-endwise'
-" Plug 'alvan/vim-closetag'
+Plug 'sheerun/vim-polyglot' " lotsa language support
 
 Plug 'neoclide/coc.nvim', { 'do': './install.sh nightly' }
 
@@ -43,11 +45,10 @@ call plug#end()
 
 " coc-managed extensions
 let g:coc_global_extensions = [
-\  'coc-snippets',
-\  'coc-pairs',
-\  'coc-tsserver',
-\  'coc-phpls',
-\  'coc-json'
+\  'https://github.com/neoclide/coc-snippets',
+\  'https://github.com/neoclide/coc-tsserver',
+\  'https://github.com/marlonfan/coc-phpls',
+\  'https://github.com/neoclide/coc-json'
 \]
 
 " don't close buffers when switching
@@ -108,9 +109,6 @@ set autoread
 " always show status line
 set laststatus=2
 
-" delete all trailing space on save
-autocmd BufWritePre * :%s/\s\+$//e
-
 " enables the mouse
 set mouse=a
 
@@ -123,6 +121,9 @@ set incsearch
 " start scrolling when the cursor is five lines away from the edge of screen
 set scrolloff=5
 set sidescrolloff=5
+
+" don't let the cursor go past the end of the line in normal mode
+set ve=
 
 " don't require .jsx extension to highlight jsx files
 let g:jsx_ext_required = 0
@@ -218,6 +219,8 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 " PLUGIN SETTINGS
 
+let g:wstrip_auto = 1
+
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
@@ -232,6 +235,7 @@ nnoremap <C-g> :NERDTreeToggle<Enter>
 
 " reveal current file in nerdtree
 nmap <leader>n :NERDTreeFind<CR>
+nmap <leader>f :NERDTreeFind<CR>
 
 " show hidden files in nerdtree
 let NERDTreeShowHidden=1
@@ -256,6 +260,12 @@ let g:ackprg = 'rg --vimgrep'
 
 " don't open first result when ack-ing
 cnoreabbrev Ack Ack!
+
+" search word under cursor
+nnoremap <leader>k :execute 'Ack! <cword>'<cr>
+
+" highlight what we're acking for
+let g:ackhighlight = 1
 
 " disable built-in ruby linter because it kills the CPU
 let g:ale_linters = {

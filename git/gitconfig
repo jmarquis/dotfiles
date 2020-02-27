@@ -5,7 +5,7 @@
   clean = git-lfs clean -- %f
 [user]
   name = Jeremy Marquis
-  email = jeremy@jeremymarquis.com
+  email = jmarquis@etsy.com
 [alias]
   co = checkout
   p = pull --rebase --stat
@@ -21,3 +21,5 @@
   preloadindex = true
 [push]
   default = current
+[github]
+  gist-oauth-token = 1cd4105e6c1cffa155dfc5204047e5f69e863051

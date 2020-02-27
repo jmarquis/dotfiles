@@ -1,7 +1,7 @@
 export EDITOR=nvim
 alias vi="nvim"
 alias vim="nvim"
-alias gist="gist -c -p"
+alias gdiff="gist -t diff"
 alias g="git"
 alias vm="mosh vm -- sh -c 'tmux -u a || tmux -u'"
 

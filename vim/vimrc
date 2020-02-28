@@ -48,7 +48,9 @@ let g:coc_global_extensions = [
 \  'coc-snippets',
 \  'coc-tsserver',
 \  'coc-phpls',
-\  'coc-json'
+\  'coc-json',
+\  'coc-css',
+\  'coc-solargraph'
 \]
 
 " don't close buffers when switching

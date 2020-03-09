@@ -47,10 +47,10 @@ call plug#end()
 
 " coc-managed extensions
 let g:coc_global_extensions = [
-\  'https://github.com/neoclide/coc-snippets',
-\  'https://github.com/neoclide/coc-tsserver',
-\  'https://github.com/marlonfan/coc-phpls',
-\  'https://github.com/neoclide/coc-json'
+\  'coc-snippets',
+\  'coc-tsserver',
+\  'coc-phpls',
+\  'coc-json'
 \]
 
 " don't close buffers when switching

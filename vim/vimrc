@@ -166,6 +166,7 @@ set backspace=indent,eol,start
 " gui stuff
 set guioptions=M
 set guifont=Monaco:h10
+set signcolumn=yes
 
 " TODO: verify if this is still needed
 if exists('$TMUX')

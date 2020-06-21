@@ -134,6 +134,12 @@ let g:jsx_ext_required = 0
 nnoremap j gj
 nnoremap k gk
 
+" navigate quickfix
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [Q :cfirst<CR>
+
 " remap mark jumping
 nnoremap ` '
 nnoremap ~ `
@@ -254,7 +260,7 @@ let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclu
 
 " fzf bindings for buffers and tags
 nnoremap ; :Buffers<CR>
-nnoremap " :Tags<Enter>
+nnoremap <Bar> :Tags<Enter>
 nnoremap ' :BTags<Enter>
 
 " find file (advanced version of gf)

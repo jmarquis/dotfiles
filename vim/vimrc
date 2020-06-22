@@ -50,7 +50,9 @@ let g:coc_global_extensions = [
 \  'coc-snippets',
 \  'coc-tsserver',
 \  'coc-phpls',
-\  'coc-json'
+\  'coc-json',
+\  'coc-css',
+\  'coc-solargraph'
 \]
 
 " don't close buffers when switching
@@ -134,6 +136,16 @@ let g:jsx_ext_required = 0
 nnoremap j gj
 nnoremap k gk
 
+" navigate quickfix
+nnoremap ]q :cnext<CR>
+nnoremap [q :cprev<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [Q :cfirst<CR>
+
+" remap mark jumping
+nnoremap ` '
+nnoremap ~ `
+
 " better split navigation bindings
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -166,6 +178,7 @@ set backspace=indent,eol,start
 " gui stuff
 set guioptions=M
 set guifont=Monaco:h10
+set signcolumn=yes
 
 " TODO: verify if this is still needed
 if exists('$TMUX')
@@ -228,6 +241,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#171f26 ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#1c252e ctermbg=234
+let g:indent_guides_exclude_filetypes = ['help', 'terminal', 'fzf']
 
 " simplify the nerdtree UI
 let NERDTreeMinimalUI = 1
@@ -242,20 +256,54 @@ nmap <leader>f :NERDTreeFind<CR>
 " show hidden files in nerdtree
 let NERDTreeShowHidden=1
 
-" make fzf accessible to vim
-set rtp+=/usr/local/opt/fzf
-
 " set up fzf to generate tags
 set tags=.tags;
 let g:fzf_tags_command = "ctags -R --exclude=.git --exclude=node_modules --exclude=vendor -f .tags"
 
 " fzf bindings for buffers and tags
 nnoremap ; :Buffers<CR>
-nnoremap " :Tags<Enter>
+nnoremap <Bar> :Tags<Enter>
 nnoremap ' :BTags<Enter>
 
 " find file (advanced version of gf)
 nmap <silent> <leader>gf :call fzf#vim#files('.', {'options': '-q '.shellescape(expand('<cfile>'))})<CR>
+
+let $FZF_DEFAULT_OPTS=' --layout=reverse  --margin=1,4 --color=bg+:#28333f,info:#28333f'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = float2nr(20)
+  let width = float2nr(120)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 10
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " use ripgrep for ack.vim
 let g:ackprg = 'rg --vimgrep'

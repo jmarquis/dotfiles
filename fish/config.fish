@@ -9,6 +9,10 @@ if type -q rvm
   rvm default
 end
 
+if type -q rbenv
+  status --is-interactive; and source (rbenv init -|psub)
+end
+
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...
 # --hidden: Search hidden files and folders

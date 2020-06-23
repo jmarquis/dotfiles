@@ -291,9 +291,9 @@ function! FloatingFZF()
 endfunction
 
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
+\ { 'fg':      ['fg', 'Comment'],
   \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
+  \ 'hl':      ['fg', 'Normal'],
   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
   \ 'hl+':     ['fg', 'Statement'],
   \ 'border':  ['fg', 'Ignore'],

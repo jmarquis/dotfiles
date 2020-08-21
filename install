@@ -14,18 +14,17 @@ if [ "$1" == "base" ]; then # set up environment
   xcode-select --install
 
   # homebrew + homebrew cask
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew tap caskroom/cask
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   # python
   brew install python
 
   # node
   brew install n
-  n latest
+  sudo n latest
 
-  # cmake (dependency for other stuff)
-  brew install cmake
+  # dependencies for other stuff
+  brew install cmake bat
 
   # git configs
   ln -s ~/dev/dotfiles/git/gitconfig ~/.gitconfig
@@ -45,6 +44,7 @@ if [ "$1" == "base" ]; then # set up environment
   #tmux
   brew install tmux
   git clone git@github.com:/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  ln -s ~/dev/dotfiles/tmux.conf ~/.tmux.conf
 
   # nvim
   brew install nvim

@@ -4,6 +4,8 @@ alias vim="nvim"
 alias gdiff="gist -t diff"
 alias g="git"
 alias vm="mosh vm -- sh -c 'tmux -u a || tmux -u'"
+alias logs="tail /var/log/httpd/info.log /var/log/httpd/info_giftcards.log /var/log/gearman/info.log"
+alias error_logs="tail /var/log/httpd/php.log /var/log/httpd/php_giftcards.log /var/log/gearman/php.log"
 
 if type -q rvm
   rvm default

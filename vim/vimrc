@@ -320,17 +320,24 @@ let g:ackhighlight = 1
 " disable built-in ruby linter because it kills the CPU
 let g:ale_linters = {
 \  'ruby': ['rubocop'],
-\  'php': []
+\  'php': [],
+\  'javascript': ['eslint'],
+\  'javascriptreact': ['eslint']
 \}
 
 " use local rubocop
 let g:ale_ruby_rubocop_executable = 'bundle'
 
 " enable prettier
-let g:ale_fixers = {}
-let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers = {
+\  'javascript': ['prettier'],
+\  'javascriptreact': ['prettier']
+\}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_pattern_options = {
+\  '\.min\.js$': { 'ale_linters': [], 'ale_fixers': [] }
+\}
 
 " close nerdtree on exit so it isn't saved in the session
 autocmd VimLeave * NERDTreeClose

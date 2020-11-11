@@ -41,8 +41,6 @@ Plug 'sheerun/vim-polyglot' " lotsa language support
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-Plug 'https://github.etsycorp.com/engineering/vim-rodeo'
-
 call plug#end()
 
 " coc-managed extensions
@@ -88,9 +86,9 @@ autocmd InsertLeave * highlight CursorLine guibg=#171f26 ctermbg=235
 set regexpengine=1
 
 " basic editing/navigation preferences
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 filetype plugin indent on
 set smartindent
@@ -313,7 +311,6 @@ let g:ale_fixers = {
 \  'javascript': ['prettier'],
 \  'javascriptreact': ['prettier']
 \}
-let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_pattern_options = {
 \  '\.min\.js$': { 'ale_linters': [], 'ale_fixers': [] }
@@ -327,14 +324,6 @@ nmap <C-_> <Plug>NERDCommenterToggle
 vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 let g:NERDSpaceDelims = 1
 
-function! RodeoStatus()
-    let status = rodeo#statusline()
-    if status == ""
-        return ""
-    endif
-    return "   " . status
-endfunction
-
 function! Readonly()
     let output = airline#util#wrap(airline#parts#readonly(),0)
     if output == ""
@@ -345,7 +334,7 @@ endfunction
 
 " simplify airline UI
 function! AirlineInit()
-  let g:airline_section_b = "%<%<%{airline#extensions#fugitiveline#bufname()}%m%#__accent_red#%{Readonly()}%#__restore__#%#__accent_red#%{RodeoStatus()}%#__restore__#"
+  let g:airline_section_b = "%<%<%{airline#extensions#fugitiveline#bufname()}%m%#__accent_red#%{Readonly()}%#__restore__#"
   let g:airline_section_c = ""
   let g:airline_section_x = "%{fugitive#head()}"
   let g:airline_section_y = "%l/%L"
@@ -360,8 +349,6 @@ let g:closetag_filenames = '*.html,*.erb,*.jsx,*.js'
 let g:closetag_xhtml_filenames = '*.jsx,*.js'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_shortcut = '>'
-
-let g:github_enterprise_urls = ['https://github.etsycorp.com']
 
 
 " COC

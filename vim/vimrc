@@ -40,6 +40,8 @@ Plug 'powerman/vim-plugin-autosess'
 Plug 'sheerun/vim-polyglot' " lotsa language support
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'liuchengxu/vista.vim'
+Plug 'vim-vdebug/vdebug'
 
 call plug#end()
 
@@ -335,7 +337,7 @@ endfunction
 " simplify airline UI
 function! AirlineInit()
   let g:airline_section_b = "%<%<%{airline#extensions#fugitiveline#bufname()}%m%#__accent_red#%{Readonly()}%#__restore__#"
-  let g:airline_section_c = ""
+  let g:airline_section_c = "%{airline#extensions#vista#currenttag()}"
   let g:airline_section_x = "%{fugitive#head()}"
   let g:airline_section_y = "%l/%L"
   let g:airline_section_z = ""
@@ -343,6 +345,11 @@ endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
 let g:airline_theme = 'ayu_custom'
+let g:airline#extensions#vista#enabled = 1
+
+" vista
+let g:vista_default_executive = 'coc'
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " closetag settings
 let g:closetag_filenames = '*.html,*.erb,*.jsx,*.js'

@@ -15,7 +15,7 @@ git remote add origin name@server.com:/jmarquis/dotfiles
 ```bash
 git fetch upstream master
 git rebase upstream/master
-git push --force origin
+git push --force
 ```
 
 ### Making forked changes
@@ -37,4 +37,5 @@ git checkout master
 git branch -D tmp
 git fetch upstream master
 git rebase upstream/master
+git push --force
 ```

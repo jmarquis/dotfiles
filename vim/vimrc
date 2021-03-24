@@ -43,7 +43,29 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'liuchengxu/vista.vim'
 Plug 'vim-vdebug/vdebug'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
 
 " coc-managed extensions
 let g:coc_global_extensions = [

@@ -32,12 +32,12 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tweekmonster/wstrip.vim' " strips whitespace
-Plug 'jiangmiao/auto-pairs'
+Plug 'cohama/lexima.vim'
 
 " misc
 Plug 'w0rp/ale'
 Plug 'powerman/vim-plugin-autosess'
-Plug 'sheerun/vim-polyglot' " lotsa language support
+" Plug 'sheerun/vim-polyglot' " lotsa language support
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'liuchengxu/vista.vim'
@@ -255,6 +255,10 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 
 " PLUGIN SETTINGS
+
+let g:lexima_enable_basic_rules = 1
+let g:lexima_enable_newline_rules = 1
+let g:lexima_enable_endwise_rules = 1
 
 let g:wstrip_auto = 1
 

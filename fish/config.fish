@@ -10,7 +10,7 @@ if type -q rvm
 end
 
 if type -q rbenv
-  status --is-interactive; and source (rbenv init -|psub)
+  status --is-interactive; and rbenv init - fish | source
 end
 
 # --files: List files that would be searched but do not search

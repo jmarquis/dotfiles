@@ -38,6 +38,7 @@ Plug 'cohama/lexima.vim'
 Plug 'w0rp/ale'
 Plug 'powerman/vim-plugin-autosess'
 " Plug 'sheerun/vim-polyglot' " lotsa language support
+Plug 'blueyed/smarty.vim'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'liuchengxu/vista.vim'
@@ -48,6 +49,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 lua <<EOF
+require 'nvim-treesitter.install'.compilers = { "gcc-11" }
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -370,6 +372,7 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
+let g:airline_inactive_collapse = 0
 let g:airline_theme = 'ayu_custom'
 let g:airline#extensions#vista#enabled = 1
 

@@ -366,7 +366,7 @@ endfunction
 function! AirlineInit()
   let g:airline_section_b = "%<%<%{airline#extensions#fugitiveline#bufname()}%m%#__accent_red#%{Readonly()}%#__restore__#"
   let g:airline_section_c = "%{airline#extensions#vista#currenttag()}"
-  let g:airline_section_x = "%{fugitive#head()}"
+  let g:airline_section_x = "%{FugitiveHead()}"
   let g:airline_section_y = "%l/%L"
   let g:airline_section_z = ""
 endfunction

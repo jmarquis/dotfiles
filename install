@@ -33,13 +33,15 @@ if [ "$1" == "base" ]; then # set up environment
   # fish
   brew install fish
   echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+  ln -s /opt/homebrew/bin/fish /usr/local/bin/fish
   chsh -s /usr/local/bin/fish
+  mkdir -p ~/.config/fish
   ln -s ~/dev/dotfiles/fish/config.fish ~/.config/fish/config.fish
   ln -s ~/dev/dotfiles/fish/fishfile ~/.config/fish/fishfile
 
   # fisher
-  curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-  fisher
+  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+  fisher install rafaelrinaldi/pure
 
   #tmux
   brew install tmux
@@ -76,11 +78,8 @@ elif [ "$1" == "apps" ]; then # install apps
   brew cask install istat-menus
   brew cask install dropshare
   brew cask install slack
-  brew cask install yakyak
-  brew cask install sip
   brew cask install daisydisk
   brew cask install sketch
-  brew cask install virtualbox
   brew cask install adobe-creative-cloud
 
   # mac app store cli
@@ -90,10 +89,6 @@ elif [ "$1" == "apps" ]; then # install apps
   mas install 1263070803 # lungo
   mas install 975937182 # fantastical 2
   mas install 1017470484 # next meeting
-  mas install 512617038 # snappy
-  mas install 904280696 # things 3
-  mas install 668208984 # giphy capture
-  mas install 1091189122 # bear
   mas install 1320666476 # wipr
 
 elif [ "$1" == "personal-apps" ]; then # install apps for personal use

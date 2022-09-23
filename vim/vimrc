@@ -339,7 +339,9 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 " enable prettier
 let g:ale_fixers = {
 \  'javascript': ['prettier'],
-\  'javascriptreact': ['prettier']
+\  'javascriptreact': ['prettier'],
+\  'typescript': ['prettier'],
+\  'typescriptreact': ['prettier'],
 \}
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_pattern_options = {
@@ -389,22 +391,15 @@ let g:closetag_shortcut = '>'
 
 " COC
 
-" use tab for trigger completion
-inoremap <silent><expr> <TAB>
-\  pumvisible() ? coc#_select_confirm() :
-\  coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-\  <SID>check_back_space() ? "\<TAB>" :
-\  coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" use tab, cr and esc for completion
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm() : "\<TAB>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <ESC> coc#pum#visible() ? coc#pum#cancel() : "\<ESC>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " map keys for navigating snippets
 let g:coc_snippet_next = '<TAB>'

@@ -19,14 +19,10 @@ vim.cmd([[
   augroup END
 ]])
 
--- fancy cursorline colors per mode
-vim.cmd([[ autocmd InsertEnter * highlight CursorLine guibg=#000000 ]])
-vim.cmd([[ autocmd InsertLeave * highlight CursorLine guibg=#171f26 ctermbg=235 ]])
-
 -- basic editing/navigation preferences
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 -- filetype plugin indent on
 vim.opt.smartindent = true

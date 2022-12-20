@@ -37,12 +37,17 @@ return packer.startup(function(use)
     'Shatur/neovim-ayu',
     config = function()
       require('ayu').colorscheme()
+      local colors = require('ayu.colors')
+      colors.generate()
 
       -- let the terminal set the bg
       -- this lets active windows have a different bgcolor
       vim.cmd([[ highlight Normal guibg=None ctermbg=None ]])
 
-      vim.cmd([[ highlight CursorLine guibg=#171f26 ]])
+      -- vim.cmd([[ highlight CursorLine guibg=#171f26 ]])
+      vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#171f26' })
+      vim.cmd([[ autocmd InsertEnter * highlight CursorLine guibg=#000000 ]])
+      vim.cmd([[ autocmd InsertLeave * highlight CursorLine guibg=#171f26 ctermbg=235 ]])
     end
   }
 
@@ -57,44 +62,58 @@ return packer.startup(function(use)
         defaults = {
           mappings = {
             i = {
-              ["<Esc>"] = require('telescope.actions').close
+              ["<Esc>"] = require('telescope.actions').close,
+              ["<C-j>"] = require('telescope.actions').move_selection_next,
+              ["<C-k>"] = require('telescope.actions').move_selection_previous
             }
           },
           sorting_strategy = 'ascending',
           prompt_prefix = '   ',
           selection_caret = '   ',
           entry_prefix = '   ',
-          border = false,
           path_display = 'truncate',
           layout_config = {
             horizontal = {
               width = 0.8,
               height = 0.6,
               prompt_position = 'top',
-              -- preview_width = 0.55,
-              results_width = 0.8,
             }
           },
         }
       })
 
+      local colors = require('ayu.colors')
+      colors.generate()
+
+      vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = '#171f26' })
+      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#171f26', fg = '#171f26' })
+      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = '#171f26', fg = '#171f26' })
+      vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = '#171f26', fg = '#171f26' })
+
+      vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.selection_bg, fg = 'white' })
+
+      vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = colors.panel_bg })
+      vim.api.nvim_set_hl(0, 'TelescopeMatching', { bold = true })
+
+      vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = '#171f26', fg = '#171f26' })
+
       vim.keymap.set({'n', 'i', 'v'}, '<C-P>', function()
-        require('telescope.builtin').find_files{}
+        require('telescope.builtin').find_files()
       end)
       vim.keymap.set({'n', 'i', 'v'}, '<C-T>', function()
-        require('telescope.builtin').find_files{}
+        require('telescope.builtin').find_files()
       end)
       vim.keymap.set('n', '<Leader>k', function()
-        require('telescope.builtin').grep_string{}
+        require('telescope.builtin').grep_string()
       end)
       vim.keymap.set('n', ';', function()
-        require('telescope.builtin').buffers{}
+        require('telescope.builtin').buffers()
       end)
       vim.keymap.set('n', 'gd', function()
-        require('telescope.builtin').lsp_definitions{}
+        require('telescope.builtin').lsp_definitions()
       end)
       vim.keymap.set('n', "'", function()
-        require('telescope.builtin').treesitter{}
+        require('telescope.builtin').treesitter()
       end)
 
     end

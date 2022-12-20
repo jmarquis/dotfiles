@@ -5,8 +5,6 @@ vim.cmd([[
   augroup end
 ]])
 
-
-
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -65,8 +63,24 @@ return packer.startup(function(use)
   use 'christoomey/vim-tmux-navigator'
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('nvim-web-devicons').setup()
+    end
+  }
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.0',
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'Shatur/neovim-ayu' },
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+      },
+    },
+    after = 'neovim-ayu',
     config = function()
 
       require('telescope').setup({
@@ -82,7 +96,7 @@ return packer.startup(function(use)
           prompt_prefix = '   ',
           selection_caret = '   ',
           entry_prefix = '   ',
-          path_display = 'truncate',
+          path_display = { truncate = 3 },
           layout_config = {
             horizontal = {
               width = 0.8,
@@ -90,8 +104,13 @@ return packer.startup(function(use)
               prompt_position = 'top',
             }
           },
+        },
+        extensions = {
+          fzf = {}
         }
       })
+
+      require('telescope').load_extension('fzf')
 
       local colors = require('ayu.colors')
       colors.generate()
@@ -100,12 +119,9 @@ return packer.startup(function(use)
       vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#171f26', fg = '#171f26' })
       vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = '#171f26', fg = '#171f26' })
       vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = '#171f26', fg = '#171f26' })
-
       vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.selection_bg, fg = 'white' })
-
       vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = '#171f26' })
       vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = colors.white, bold = true })
-
 
       vim.keymap.set({'n', 'i', 'v'}, '<C-P>', function()
         require('telescope.builtin').find_files()
@@ -126,6 +142,56 @@ return packer.startup(function(use)
         require('telescope.builtin').treesitter()
       end)
 
+    end
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      { 'Shatur/neovim-ayu' }
+    },
+    after = 'neovim-ayu',
+    config = function()
+      require('lualine').setup {
+        sections = {
+          lualine_b = {},
+          lualine_c = {
+            {
+              'filetype',
+              icon_only = true,
+              separator = '',
+              padding = { left = 2, right = 0 }
+            },
+            {
+              'filename',
+              path = 1,
+              symbols = { modified = '*' }
+            }
+          },
+          lualine_x = { 'diff' },
+          lualine_y = { 'branch' },
+        },
+        inactive_sections = {
+          lualine_c = {
+            {
+              'mode',
+              separator = '',
+              padding = { left = 1, right = 2 }
+            },
+            {
+              'filetype',
+              icon_only = true,
+              separator = '',
+              padding = { left = 1, right = 0 }
+            },
+            {
+              'filename',
+              path = 1,
+              symbols = { modified = '*' }
+            }
+          },
+        }
+      }
     end
   }
 

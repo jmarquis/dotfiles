@@ -44,10 +44,21 @@ return packer.startup(function(use)
       -- this lets active windows have a different bgcolor
       vim.cmd([[ highlight Normal guibg=None ctermbg=None ]])
 
-      -- vim.cmd([[ highlight CursorLine guibg=#171f26 ]])
       vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#171f26' })
-      vim.cmd([[ autocmd InsertEnter * highlight CursorLine guibg=#000000 ]])
-      vim.cmd([[ autocmd InsertLeave * highlight CursorLine guibg=#171f26 ctermbg=235 ]])
+
+      vim.api.nvim_create_autocmd('InsertEnter', {
+        callback = function()
+          if vim.bo[vim.api.nvim_get_current_buf()].filetype ~= 'TelescopePrompt' then
+            vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#000000' })
+          end
+        end
+      })
+
+      vim.api.nvim_create_autocmd('InsertLeave', {
+        callback = function()
+          vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#171f26' })
+        end
+      })
     end
   }
 
@@ -92,10 +103,9 @@ return packer.startup(function(use)
 
       vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.selection_bg, fg = 'white' })
 
-      vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = colors.panel_bg })
+      vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = '#171f26' })
       vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = colors.white, bold = true })
 
-      vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = '#171f26', fg = '#171f26' })
 
       vim.keymap.set({'n', 'i', 'v'}, '<C-P>', function()
         require('telescope.builtin').find_files()

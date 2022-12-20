@@ -11,13 +11,18 @@ vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
 -- cursorline only for active window
-vim.cmd([[
-  augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-  augroup END
-]])
+vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter', 'BufWinEnter' }, {
+  callback = function()
+    if vim.bo[vim.api.nvim_get_current_buf()].filetype ~= "TelescopePrompt" then
+      vim.opt_local.cursorline = true
+    end
+  end
+})
+vim.api.nvim_create_autocmd('WinLeave', {
+  callback = function()
+    vim.opt_local.cursorline = false
+  end
+})
 
 -- basic editing/navigation preferences
 vim.opt.tabstop = 2

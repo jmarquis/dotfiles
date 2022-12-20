@@ -93,7 +93,7 @@ return packer.startup(function(use)
       vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.selection_bg, fg = 'white' })
 
       vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = colors.panel_bg })
-      vim.api.nvim_set_hl(0, 'TelescopeMatching', { bold = true })
+      vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = colors.white, bold = true })
 
       vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = '#171f26', fg = '#171f26' })
 

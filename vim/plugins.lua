@@ -46,7 +46,9 @@ return packer.startup(function(use)
 
       vim.api.nvim_create_autocmd('InsertEnter', {
         callback = function()
-          if vim.bo[vim.api.nvim_get_current_buf()].filetype ~= 'TelescopePrompt' then
+          if vim.bo[vim.api.nvim_get_current_buf()].filetype == 'TelescopePrompt' then
+            vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#1F2A33' })
+          else
             vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#000000' })
           end
         end
@@ -117,10 +119,13 @@ return packer.startup(function(use)
 
       vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = '#171f26' })
       vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#171f26', fg = '#171f26' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = '#171f26', fg = '#171f26' })
+      vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = '#1F2A33' })
+      vim.api.nvim_set_hl(0, 'TelescopePromptCounter', { bg = '#1F2A33', fg = colors.ui })
+      vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = '#1F2A33', fg = '#1F2A33' })
+      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = '#1F2A33', fg = '#1F2A33' })
+      vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = '#1F2A33' })
       vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = '#171f26', fg = '#171f26' })
       vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.selection_bg, fg = 'white' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = '#171f26' })
       vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = colors.white, bold = true })
 
       vim.keymap.set({'n', 'i', 'v'}, '<C-P>', function()

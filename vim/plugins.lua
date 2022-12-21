@@ -34,9 +34,16 @@ return packer.startup(function(use)
   use {
     'Shatur/neovim-ayu',
     config = function()
-      require('ayu').colorscheme()
       local colors = require('ayu.colors')
       colors.generate()
+
+      require('ayu').setup({
+        overrides = {
+          LineNr = { fg = colors.comment }
+        }
+      })
+
+      require('ayu').colorscheme()
 
       -- let the terminal set the bg
       -- this lets active windows have a different bgcolor
@@ -96,7 +103,8 @@ return packer.startup(function(use)
         requires = {
           { 'L3MON4D3/LuaSnip' }
         }
-      }
+      },
+      { 'onsails/lspkind.nvim' }
     },
     config = function()
       local cmp = require('cmp')
@@ -116,6 +124,24 @@ return packer.startup(function(use)
           ['<C-j>'] = cmp.mapping.select_next_item(),
           ['<CR>'] = cmp.mapping.confirm { select = true },
           ['<Tab>'] = cmp.mapping.confirm { select = true }
+        },
+        window = {
+          completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+          },
+        },
+        formatting = {
+          fields = { 'kind', 'abbr', 'menu' },
+          format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. strings[1] .. " "
+            kind.menu = "    (" .. strings[2] .. ")"
+
+            return kind
+          end
         }
       }
 

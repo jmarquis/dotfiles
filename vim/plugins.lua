@@ -83,6 +83,29 @@ return packer.startup(function(use)
   }
 
   use {
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup()
+    end
+  }
+
+  use {
+    'williamboman/mason-lspconfig.nvim',
+    requires = {
+      { 'neovim/nvim-lspconfig' },
+    },
+    config = function()
+      require('mason-lspconfig').setup()
+
+      require('mason-lspconfig').setup_handlers({
+        function(server_name)
+          require('lspconfig')[server_name].setup {}
+        end
+      })
+    end
+  }
+
+  use {
     'nvim-tree/nvim-web-devicons',
     config = function()
       require('nvim-web-devicons').setup()

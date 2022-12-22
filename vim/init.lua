@@ -29,13 +29,15 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
--- filetype plugin indent on
 vim.opt.smartindent = true
 vim.opt.number = true
 vim.opt.showmatch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
+vim.opt.showmode = false
+
+-- treat $ as part of variable names in PHP
 vim.cmd([[ autocmd FileType php setl iskeyword+=$ ]])
 
 -- start scrolling when the cursor is five spaces away from the edge of the screen

@@ -32,7 +32,6 @@ return packer.startup({ function(use)
       require('ayu').setup({
         overrides = {
           LineNr = { fg = colors.comment },
-          lualine_c_normal = { bg = '#ff0000' },
         }
       })
 
@@ -44,12 +43,6 @@ return packer.startup({ function(use)
 
       vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#171f26' })
       vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1F2A33' })
-
-      vim.api.nvim_create_autocmd('ColorScheme', {
-        callback = function()
-          vim.api.nvim_set_hl(0, 'lualine_c_normal', { bg = '#171f26' })
-        end
-      })
 
       vim.api.nvim_create_autocmd('InsertEnter', {
         callback = function()
@@ -95,7 +88,7 @@ return packer.startup({ function(use)
   }
 
   use {
-    "lukas-reineke/indent-blankline.nvim",
+    'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup({
         show_current_context = true,
@@ -109,9 +102,9 @@ return packer.startup({ function(use)
   use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   use {
-    "windwp/nvim-autopairs",
+    'windwp/nvim-autopairs',
     config = function()
-      require("nvim-autopairs").setup {}
+      require('nvim-autopairs').setup {}
     end
   }
 
@@ -148,7 +141,7 @@ return packer.startup({ function(use)
           end
         },
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
+          { name = 'nvim_lsp' },
         }, {
           { name = 'buffer' },
         }),
@@ -160,7 +153,7 @@ return packer.startup({ function(use)
         },
         window = {
           completion = {
-            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
             col_offset = -3,
             side_padding = 0,
           },
@@ -168,10 +161,10 @@ return packer.startup({ function(use)
         formatting = {
           fields = { 'kind', 'abbr', 'menu' },
           format = function(entry, vim_item)
-            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-            local strings = vim.split(kind.kind, "%s", { trimempty = true })
-            kind.kind = " " .. strings[1] .. " "
-            kind.menu = "    (" .. strings[2] .. ")"
+            local kind = require('lspkind').cmp_format({ mode = 'symbol_text', maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, '%s', { trimempty = true })
+            kind.kind = ' ' .. strings[1] .. ' '
+            kind.menu = '    (' .. strings[2] .. ')'
 
             return kind
           end
@@ -321,9 +314,9 @@ return packer.startup({ function(use)
         defaults = {
           mappings = {
             i = {
-              ["<Esc>"] = require('telescope.actions').close,
-              ["<C-j>"] = require('telescope.actions').move_selection_next,
-              ["<C-k>"] = require('telescope.actions').move_selection_previous
+              ['<Esc>'] = require('telescope.actions').close,
+              ['<C-j>'] = require('telescope.actions').move_selection_next,
+              ['<C-k>'] = require('telescope.actions').move_selection_previous
             }
           },
           sorting_strategy = 'ascending',
@@ -345,6 +338,7 @@ return packer.startup({ function(use)
       })
 
       require('telescope').load_extension('fzf')
+      require('telescope').load_extension('aerial')
 
       local colors = require('ayu.colors')
       colors.generate()
@@ -376,7 +370,7 @@ return packer.startup({ function(use)
         require('telescope.builtin').lsp_definitions()
       end)
       vim.keymap.set('n', "'", function()
-        require('telescope.builtin').treesitter()
+        vim.cmd([[ :Telescope aerial ]])
       end)
 
     end
@@ -385,15 +379,24 @@ return packer.startup({ function(use)
   use {
     'nvim-lualine/lualine.nvim',
     requires = {
-      { 'Shatur/neovim-ayu' }
+      { 'Shatur/neovim-ayu' },
+      { 'stevearc/aerial.nvim' }
     },
     after = 'neovim-ayu',
     config = function()
+      require('aerial').setup()
+
       local custom_ayu = require('lualine.themes.ayu')
+      local colors = require('ayu.colors')
+      colors.generate()
 
       custom_ayu.normal.c.bg = '#171f26'
+      custom_ayu.normal.x = { fg = colors.comment, bg = '#171f26' }
 
       require('lualine').setup {
+        options = {
+          theme = custom_ayu
+        },
         sections = {
           lualine_b = {},
           lualine_c = {
@@ -409,15 +412,27 @@ return packer.startup({ function(use)
               symbols = { modified = '*' }
             }
           },
-          lualine_x = { 'diff' },
-          lualine_y = { 'branch' },
+          lualine_x = {
+            {
+              'aerial',
+              sep = ' › ',
+              padding = { left = 1, right = 2 }
+            }
+          },
+          lualine_y = {
+            {
+              'diff',
+              separator = ''
+            },
+            'branch'
+          },
         },
         inactive_sections = {
           lualine_c = {
             {
               'mode',
               separator = '',
-              padding = { left = 1, right = 2 }
+              padding = { left = 1, right = 3 }
             },
             {
               'filetype',
@@ -435,6 +450,14 @@ return packer.startup({ function(use)
       }
     end
   }
+
+  use({
+    'kylechui/nvim-surround',
+    tag = '*',
+    config = function()
+      require('nvim-surround').setup({})
+    end
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

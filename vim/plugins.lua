@@ -87,7 +87,20 @@ return packer.startup({ function(use)
         indent = {
           enable = true,
         },
+        autopairs = {
+          enable = true,
+        }
       }
+    end
+  }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require('indent_blankline').setup({
+        show_current_context = true,
+        show_current_context_start = false
+      })
     end
   }
 
@@ -229,6 +242,14 @@ return packer.startup({ function(use)
     'nvim-tree/nvim-web-devicons',
     config = function()
       require('nvim-web-devicons').setup()
+    end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    tag = 'release',
+    config = function()
+      require('gitsigns').setup()
     end
   }
 

@@ -451,13 +451,25 @@ return packer.startup({ function(use)
     end
   }
 
-  use({
+  use {
     'kylechui/nvim-surround',
     tag = '*',
     config = function()
       require('nvim-surround').setup({})
     end
-  })
+  }
+
+  use {
+    'ntpeters/vim-better-whitespace',
+    config = function()
+      vim.g.better_whitespace_enabled = 1
+      vim.g.strip_whitespace_on_save = 1
+      vim.g.strip_whitespace_confirm = 0
+      vim.g.strip_only_modified_lines = 1
+      vim.g.strip_whitelines_at_eof = 1
+      vim.cmd("autocmd BufWritePre * :StripWhitespace")
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

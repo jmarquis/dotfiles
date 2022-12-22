@@ -104,6 +104,26 @@ return packer.startup({ function(use)
     end
   }
 
+  use 'tpope/vim-sleuth'
+  use 'windwp/nvim-ts-autotag'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
+    end
+  }
+
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -247,7 +267,6 @@ return packer.startup({ function(use)
 
   use {
     'lewis6991/gitsigns.nvim',
-    tag = 'release',
     config = function()
       require('gitsigns').setup()
     end

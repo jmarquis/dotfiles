@@ -247,11 +247,31 @@ return packer.startup({ function(use)
 
       require('mason-lspconfig').setup()
 
+      -- automatically initialize LSP server per filetype
       require('mason-lspconfig').setup_handlers({
         function(server_name)
-          require('lspconfig')[server_name].setup {
+
+          local args = {
             on_attach = on_attach
           }
+
+          if server_name == 'tsserver' then
+            args.init_options = {
+              hostInfo = 'neovim',
+              maxTsServerMemory = 8192
+            }
+          end
+
+          if server_name == 'intelephense' then
+            args.settings = {
+              intelephense = {
+                maxMemory = 8192
+              }
+            }
+          end
+
+          require('lspconfig')[server_name].setup(args)
+
         end
       })
 

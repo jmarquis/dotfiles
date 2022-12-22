@@ -19,15 +19,7 @@ end
 local packer_bootstrap = ensure_packer()
 local packer = require 'packer'
 
-packer.init({
-  config = {
-    display = {
-      open_fn = require('packer.util').float,
-    }
-  }
-})
-
-return packer.startup(function(use)
+return packer.startup({ function(use)
 
   use 'wbthomason/packer.nvim'
 
@@ -39,7 +31,8 @@ return packer.startup(function(use)
 
       require('ayu').setup({
         overrides = {
-          LineNr = { fg = colors.comment }
+          LineNr = { fg = colors.comment },
+          lualine_c_normal = { bg = '#ff0000' },
         }
       })
 
@@ -50,6 +43,13 @@ return packer.startup(function(use)
       vim.cmd([[ highlight Normal guibg=None ctermbg=None ]])
 
       vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#171f26' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1F2A33' })
+
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        callback = function()
+          vim.api.nvim_set_hl(0, 'lualine_c_normal', { bg = '#171f26' })
+        end
+      })
 
       vim.api.nvim_create_autocmd('InsertEnter', {
         callback = function()
@@ -176,13 +176,52 @@ return packer.startup(function(use)
       { 'neovim/nvim-lspconfig' },
     },
     config = function()
+
+      local on_attach = function(client, bufnr)
+        local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+
+        -- highlight symbol under cursor
+        if client.server_capabilities.documentHighlightProvider then
+
+          local colors = require('ayu.colors')
+          colors.generate()
+
+          vim.api.nvim_set_hl(0, 'LspReferenceRead', { bg = colors.selection_bg })
+          vim.api.nvim_set_hl(0, 'LspReferenceText', { bg = colors.selection_bg })
+          vim.api.nvim_set_hl(0, 'LspReferenceWrite', { bg = colors.selection_bg })
+
+          vim.api.nvim_create_augroup('lsp_document_highlight', {
+            clear = false
+          })
+          vim.api.nvim_clear_autocmds({
+            buffer = bufnr,
+            group = 'lsp_document_highlight',
+          })
+          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            group = 'lsp_document_highlight',
+            buffer = bufnr,
+            callback = vim.lsp.buf.document_highlight,
+          })
+          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            group = 'lsp_document_highlight',
+            buffer = bufnr,
+            callback = vim.lsp.buf.clear_references,
+          })
+
+        end
+      end
+
       require('mason-lspconfig').setup()
 
       require('mason-lspconfig').setup_handlers({
         function(server_name)
-          require('lspconfig')[server_name].setup {}
+          require('lspconfig')[server_name].setup {
+            on_attach = on_attach
+          }
         end
       })
+
     end
   }
 
@@ -279,6 +318,10 @@ return packer.startup(function(use)
     },
     after = 'neovim-ayu',
     config = function()
+      local custom_ayu = require('lualine.themes.ayu')
+
+      custom_ayu.normal.c.bg = '#171f26'
+
       require('lualine').setup {
         sections = {
           lualine_b = {},
@@ -328,4 +371,12 @@ return packer.startup(function(use)
     require('packer').sync()
   end
 
-end)
+end,
+
+config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float { border = 'rounded'}
+    end
+  }
+}})

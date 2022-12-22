@@ -62,7 +62,7 @@ vim.opt.splitright = true
 vim.opt.updatetime = 300
 
 -- show invisibles
-vim.opt.listchars = 'eol:¬,tab:>·,extends:>,precedes:<'
+vim.opt.listchars = 'eol:¬,tab:>·,extends:>,precedes:<,trail:·'
 vim.opt.list = true
 vim.opt.signcolumn = 'yes'
 

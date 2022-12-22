@@ -32,6 +32,8 @@ return packer.startup({ function(use)
       require('ayu').setup({
         overrides = {
           LineNr = { fg = colors.comment },
+          NonText = { fg = '#434c5d' },
+          SpecialKey = { fg = '#434c5d' },
         }
       })
 
@@ -292,7 +294,16 @@ return packer.startup({ function(use)
   use {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require('gitsigns').setup()
+      require('gitsigns').setup({
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+          local opts = { buffer = bufnr }
+          vim.keymap.set('n', ']c', function() gs.next_hunk() end, opts)
+          vim.keymap.set('n', '[c', function() gs.prev_hunk() end, opts)
+          vim.keymap.set('n', '<Leader>hr', function() gs.reset_hunk() end, opts)
+          vim.keymap.set('n', '<Leader>hb', function() gs.blame_line({ full = true }) end, opts)
+        end
+      })
     end
   }
 
@@ -462,12 +473,22 @@ return packer.startup({ function(use)
   use {
     'ntpeters/vim-better-whitespace',
     config = function()
-      vim.g.better_whitespace_enabled = 1
+      vim.g.better_whitespace_enabled = 0
       vim.g.strip_whitespace_on_save = 1
       vim.g.strip_whitespace_confirm = 0
       vim.g.strip_only_modified_lines = 1
       vim.g.strip_whitelines_at_eof = 1
       vim.cmd("autocmd BufWritePre * :StripWhitespace")
+    end
+  }
+
+  use {
+    'tpope/vim-fugitive',
+    requires = {
+      'tpope/vim-rhubarb'
+    },
+    config = function()
+
     end
   }
 

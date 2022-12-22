@@ -207,6 +207,8 @@ return packer.startup({ function(use)
     'williamboman/mason-lspconfig.nvim',
     requires = {
       { 'neovim/nvim-lspconfig' },
+      { 'folke/neoconf.nvim' },
+      { 'folke/neodev.nvim' }
     },
     config = function()
 
@@ -245,6 +247,9 @@ return packer.startup({ function(use)
         end
       end
 
+      require('neoconf').setup({})
+      require('neodev').setup({})
+
       require('mason-lspconfig').setup()
 
       require('mason-lspconfig').setup_handlers({
@@ -262,6 +267,32 @@ return packer.startup({ function(use)
     'nvim-tree/nvim-web-devicons',
     config = function()
       require('nvim-web-devicons').setup()
+    end
+  }
+
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      require('neo-tree').setup({
+        filesystem = {
+          hijack_netrw_behavior = 'open_current'
+        }
+      })
+
+      vim.keymap.set('n', '<C-g>', function()
+        require('neo-tree.command').execute({ toggle = true })
+      end)
+
+      vim.keymap.set('n', '<Leader>f', function()
+        require('neo-tree.command').execute({ reveal = true })
+      end)
     end
   }
 

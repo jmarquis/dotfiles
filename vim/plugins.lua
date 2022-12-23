@@ -73,7 +73,7 @@ return packer.startup({ function(use)
       ts_update()
     end,
     config = function()
-      require('nvim-treesitter.install').compilers = { 'gcc-11' }
+      require('nvim-treesitter.install').compilers = { 'gcc' }
       require('nvim-treesitter.configs').setup {
         auto_install = true,
         highlight = {
@@ -421,8 +421,13 @@ return packer.startup({ function(use)
       local colors = require('ayu.colors')
       colors.generate()
 
-      custom_ayu.normal.c.bg = '#171f26'
-      custom_ayu.normal.x = { fg = colors.comment, bg = '#171f26' }
+      custom_ayu.normal.c.bg = '#1F2A33'
+      custom_ayu.normal.x = { fg = colors.comment, bg = '#1F2A33' }
+      custom_ayu.inactive.c.bg = '#171f26'
+
+      local function lines()
+        return vim.api.nvim_win_get_cursor(0)[1] .. '/' .. vim.api.nvim_buf_line_count(0)
+      end
 
       require('lualine').setup {
         options = {
@@ -457,6 +462,7 @@ return packer.startup({ function(use)
             },
             'branch'
           },
+          lualine_z = { lines }
         },
         inactive_sections = {
           lualine_c = {

@@ -528,7 +528,7 @@ return packer.startup({ function(use)
   use {
     'jayp0521/mason-null-ls.nvim',
     requires = {
-      'jose-elias-alverez/null-ls.nvim'
+      'jose-elias-alvarez/null-ls.nvim'
     },
     config = function()
       require('mason-null-ls').setup({

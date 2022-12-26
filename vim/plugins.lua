@@ -522,9 +522,18 @@ return packer.startup({ function(use)
     'tpope/vim-fugitive',
     requires = {
       'tpope/vim-rhubarb'
+    }
+  }
+
+  use {
+    'jayp0521/mason-null-ls.nvim',
+    requires = {
+      'jose-elias-alverez/null-ls.nvim'
     },
     config = function()
-
+      require('mason-null-ls').setup({
+        automatic_setup = true
+      })
     end
   }
 

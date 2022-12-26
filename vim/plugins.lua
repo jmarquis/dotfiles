@@ -203,7 +203,8 @@ return packer.startup({ function(use)
     requires = {
       { 'neovim/nvim-lspconfig' },
       { 'folke/neoconf.nvim' },
-      { 'folke/neodev.nvim' }
+      { 'folke/neodev.nvim' },
+      { 'b0o/SchemaStore.nvim' }
     },
     config = function()
 
@@ -266,6 +267,15 @@ return packer.startup({ function(use)
             args.settings = {
               intelephense = {
                 maxMemory = 8192
+              }
+            }
+          end
+
+          if server_name == 'jsonls' then
+            args.settings = {
+              json = {
+                schemas = require('schemastore').json.schemas(),
+                validate = { enable = true }
               }
             }
           end

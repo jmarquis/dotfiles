@@ -344,8 +344,8 @@ return packer.startup({ function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'Shatur/neovim-ayu' },
       {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+        'nvim-telescope/telescope-fzy-native.nvim',
+        -- run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
       },
     },
     after = 'neovim-ayu',
@@ -372,13 +372,14 @@ return packer.startup({ function(use)
               prompt_position = 'top',
             }
           },
+          cache_picker = {
+            num_pickers = 10,
+            limit_entries = 10000,
+          },
         },
-        extensions = {
-          fzf = {}
-        }
       })
 
-      require('telescope').load_extension('fzf')
+      require('telescope').load_extension('fzy_native')
       require('telescope').load_extension('aerial')
 
       local colors = require('ayu.colors')
@@ -401,11 +402,20 @@ return packer.startup({ function(use)
       vim.keymap.set({'n', 'i', 'v'}, '<C-T>', function()
         require('telescope.builtin').find_files()
       end)
+      vim.keymap.set('n', '<C-f>', function()
+        require('telescope.builtin').live_grep()
+      end)
       vim.keymap.set('n', '<Leader>k', function()
         require('telescope.builtin').grep_string()
       end)
       vim.keymap.set('n', ';', function()
         require('telescope.builtin').buffers()
+      end)
+      vim.keymap.set('n', '<Leader>l', function()
+        require('telescope.builtin').resume()
+      end)
+      vim.keymap.set('n', '<Leader><Leader>', function()
+        require('telescope.builtin').pickers()
       end)
       vim.keymap.set('n', 'gd', function()
         require('telescope.builtin').lsp_definitions()

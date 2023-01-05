@@ -78,6 +78,7 @@ return packer.startup({ function(use)
         auto_install = true,
         highlight = {
           enable = true,
+          disable = { "embedded_template" },
         },
         indent = {
           enable = true,

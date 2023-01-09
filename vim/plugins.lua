@@ -547,24 +547,67 @@ return packer.startup({ function(use)
         automatic_setup = true
       })
 
-      require('mason-null-ls').setup_handlers({})
+      require('mason-null-ls').setup_handlers({
+        function(source_name, methods)
+          require('mason-null-ls.automatic_setup')(source_name, methods)
+        end
+      })
 
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-      require("null-ls").setup({
+      local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+      require('null-ls').setup({
         on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
+          -- format on save
+          if client.supports_method('textDocument/formatting') then
             vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
+            vim.api.nvim_create_autocmd('BufWritePre', {
               group = augroup,
               buffer = bufnr,
               callback = function()
-                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                 vim.lsp.buf.format({ bufnr = bufnr })
               end,
             })
           end
         end,
       })
+    end
+  }
+
+  use {
+    'folke/noice.nvim',
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
+    },
+    config = function()
+      require('notify').setup({
+        stages = 'static',
+        timeout = 10000
+      })
+      require('noice').setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        presets = {
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = true, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true, -- add a border to hover docs and signature help
+        },
+      })
+    end
+  }
+
+  use {
+    'smjonas/inc-rename.nvim',
+    config = function()
+      require('inc_rename').setup()
+      vim.keymap.set('n', '<leader>rn', ':IncRename ')
     end
   }
 

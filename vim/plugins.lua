@@ -345,8 +345,8 @@ return packer.startup({ function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'Shatur/neovim-ayu' },
       {
-        'nvim-telescope/telescope-fzy-native.nvim',
-        -- run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
       },
     },
     after = 'neovim-ayu',
@@ -380,7 +380,7 @@ return packer.startup({ function(use)
         },
       })
 
-      require('telescope').load_extension('fzy_native')
+      require('telescope').load_extension('fzf')
       require('telescope').load_extension('aerial')
 
       local colors = require('ayu.colors')

@@ -378,6 +378,12 @@ return packer.startup({ function(use)
             limit_entries = 10000,
           },
         },
+        pickers = {
+          buffers = {
+            ignore_current_buffer = true,
+            sort_mru = true,
+          }
+        },
       })
 
       require('telescope').load_extension('fzf')

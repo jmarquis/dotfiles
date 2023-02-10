@@ -40,7 +40,7 @@ if [ "$1" == "base" ]; then # set up environment
   ln -s ~/dev/dotfiles/fish/fishfile ~/.config/fish/fishfile
 
   # fisher
-  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
   fisher install rafaelrinaldi/pure
 
   #tmux
@@ -61,12 +61,6 @@ if [ "$1" == "base" ]; then # set up environment
 
   # gist
   brew install gist
-
-  # ctags
-  brew install ctags
-
-  # tern
-  ln -s ~/dev/dotfiles/tern/tern-project ~/.tern-project
 
 elif [ "$1" == "apps" ]; then # install apps
 

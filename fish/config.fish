@@ -5,6 +5,8 @@ alias gdiff="gist -t diff"
 alias g="git"
 alias vm="mosh vm -- sh -c 'tmux -u a || tmux -u'"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 if type -q rvm
   rvm default
 end

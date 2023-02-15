@@ -524,14 +524,9 @@ return packer.startup({ function(use)
   }
 
   use {
-    'ntpeters/vim-better-whitespace',
+    'tweekmonster/wstrip.vim',
     config = function()
-      vim.g.better_whitespace_enabled = 0
-      vim.g.strip_whitespace_on_save = 1
-      vim.g.strip_whitespace_confirm = 0
-      vim.g.strip_only_modified_lines = 1
-      vim.g.strip_whitelines_at_eof = 1
-      vim.cmd("autocmd BufWritePre * :StripWhitespace")
+      vim.g.wstrip_auto = 1
     end
   }
 

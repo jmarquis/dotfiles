@@ -48,11 +48,7 @@ return packer.startup({ function(use)
 
       vim.api.nvim_create_autocmd('InsertEnter', {
         callback = function()
-          if vim.bo[vim.api.nvim_get_current_buf()].filetype == 'TelescopePrompt' then
-            vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#1F2A33' })
-          else
-            vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#000000' })
-          end
+          vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#000000' })
         end
       })
 
@@ -339,100 +335,93 @@ return packer.startup({ function(use)
   }
 
   use {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
-    requires = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'Shatur/neovim-ayu' },
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-      },
-    },
+    'ibhagwan/fzf-lua',
+    requires = { 'nvim-tree/nvim-web-devicons' },
     after = 'neovim-ayu',
     config = function()
-
-      require('telescope').setup({
-        defaults = {
-          mappings = {
-            i = {
-              ['<Esc>'] = require('telescope.actions').close,
-              ['<C-j>'] = require('telescope.actions').move_selection_next,
-              ['<C-k>'] = require('telescope.actions').move_selection_previous
-            }
-          },
-          sorting_strategy = 'ascending',
-          prompt_prefix = '   ',
-          selection_caret = '   ',
-          entry_prefix = '   ',
-          path_display = { truncate = 3 },
-          layout_config = {
-            horizontal = {
-              width = 0.8,
-              height = 0.6,
-              prompt_position = 'top',
-            }
-          },
-          cache_picker = {
-            num_pickers = 10,
-            limit_entries = 10000,
-          },
-        },
-        pickers = {
-          buffers = {
-            ignore_current_buffer = true,
-            sort_mru = true,
-          }
-        },
-      })
-
-      require('telescope').load_extension('fzf')
-      require('telescope').load_extension('aerial')
 
       local colors = require('ayu.colors')
       colors.generate()
 
-      vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = '#171f26' })
-      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = '#171f26', fg = '#171f26' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = '#1F2A33' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptCounter', { bg = '#1F2A33', fg = colors.ui })
-      vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = '#1F2A33', fg = '#1F2A33' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = '#1F2A33', fg = '#1F2A33' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptPrefix', { bg = '#1F2A33' })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = '#171f26', fg = '#171f26' })
-      vim.api.nvim_set_hl(0, 'TelescopeSelection', { bg = colors.selection_bg, fg = 'white' })
-      vim.api.nvim_set_hl(0, 'TelescopeMatching', { fg = colors.white, bold = true })
+      require('fzf-lua').setup({
 
-      vim.keymap.set({'n', 'i', 'v'}, '<C-P>', function()
-        require('telescope.builtin').find_files()
+        winopts = {
+          border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+          hl = {
+            normal = 'Normal'
+          }
+        },
+
+        fzf_colors = {
+          ['bg'] = '#171f26',
+          ['bg+'] = colors.selection_bg,
+          ['gutter'] = '#171f26',
+          ['fg'] = '#cccccc',
+          ['hl'] = '#ffffff',
+          ['hl+'] = colors.keyword,
+          ['pointer'] = '#ffffff',
+          ['fg+'] = '#ffffff',
+          ['header'] = '#cccccc',
+
+          -- haven't figured out what these do
+          -- ['prompt'] = '#000000',
+          -- ['info'] = '#ff0000',
+          -- ['marker'] = '#0000ff',
+          -- ['spinner'] = '#00ff00',
+        },
+
+        fzf_opts = {
+          ['--info'] = 'hidden',
+          ['--pointer'] = '•',
+        },
+
+        files = {
+          prompt = '      '
+        },
+
+        buffers = {
+          prompt = '     '
+        },
+
+        grep = {
+          prompt = '    '
+        },
+
+        lsp = {
+          prompt = 'piss'
+        }
+
+      })
+
+      vim.api.nvim_set_hl(0, 'FzfLuaBorder', { bg = '#171f26' })
+      vim.api.nvim_set_hl(0, 'FzfLuaCursorLine', { bg = '#000000' })
+      vim.api.nvim_set_hl(0, 'FzfLuaTitle', { bg = '#171f26', fg = '#171f26' })
+
+      vim.keymap.set('n', '<C-P>', function()
+        require('fzf-lua').files()
       end)
-      vim.keymap.set({'n', 'i', 'v'}, '<C-T>', function()
-        require('telescope.builtin').find_files()
-      end)
-      vim.keymap.set('n', '<C-f>', function()
-        require('telescope.builtin').live_grep()
+      vim.keymap.set('n', '<C-F>', function()
+        require('fzf-lua').live_grep_native()
       end)
       vim.keymap.set('n', '<Leader>k', function()
-        require('telescope.builtin').grep_string()
+        require('fzf-lua').grep_cword()
       end)
       vim.keymap.set('n', ';', function()
-        require('telescope.builtin').buffers()
+        require('fzf-lua').buffers()
       end)
       vim.keymap.set('n', '<Leader>l', function()
-        require('telescope.builtin').resume()
-      end)
-      vim.keymap.set('n', '<Leader><Leader>', function()
-        require('telescope.builtin').pickers()
+        require('fzf-lua').resume()
       end)
       vim.keymap.set('n', 'gd', function()
-        require('telescope.builtin').lsp_definitions()
+        require('fzf-lua').lsp_definitions({ jump_to_single_result = true })
       end)
       vim.keymap.set('n', "'", function()
-        vim.cmd([[ :Telescope aerial ]])
+        require('fzf-lua').lsp_document_symbols()
       end)
-
     end
   }
+
+  use { 'junegunn/fzf', run = './install --bin', }
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -546,12 +535,6 @@ return packer.startup({ function(use)
     config = function()
       require('mason-null-ls').setup({
         automatic_setup = true
-      })
-
-      require('mason-null-ls').setup_handlers({
-        function(source_name, methods)
-          require('mason-null-ls.automatic_setup')(source_name, methods)
-        end
       })
 
       local augroup = vim.api.nvim_create_augroup('LspFormatting', {})

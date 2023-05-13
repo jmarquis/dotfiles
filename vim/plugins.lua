@@ -343,6 +343,8 @@ return packer.startup({ function(use)
       local colors = require('ayu.colors')
       colors.generate()
 
+      local actions = require('fzf-lua.actions')
+
       require('fzf-lua').setup({
 
         winopts = {
@@ -350,6 +352,23 @@ return packer.startup({ function(use)
           hl = {
             normal = 'Normal'
           }
+        },
+
+        actions = {
+          files = {
+            ['default'] = actions.file_edit_or_qf,
+            ['ctrl-x'] = actions.file_split,
+            ['ctrl-v'] = actions.file_vsplit,
+            ['ctrl-t'] = actions.file_tabedit,
+            ['alt-q'] = actions.file_sel_to_qf,
+            ['alt-l'] = actions.file_sel_to_ll,
+          },
+          buffers = {
+            ['default'] = actions.buf_edit,
+            ['ctrl-x'] = actions.buf_split,
+            ['ctrl-v'] = actions.buf_vsplit,
+            ['ctrl-t'] = actions.buf_tabedit,
+          },
         },
 
         fzf_colors = {

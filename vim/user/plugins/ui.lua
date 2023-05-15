@@ -99,9 +99,9 @@ return {
       local colors = require('ayu.colors')
       colors.generate()
 
-      custom_ayu.normal.c.bg = '#1F2A33'
+      custom_ayu.normal.c = { fg = colors.fg, bg = '#1F2A33' }
       custom_ayu.normal.x = { fg = colors.comment, bg = '#1F2A33' }
-      custom_ayu.inactive.c.bg = '#171f26'
+      custom_ayu.inactive.c =  { fg = colors.fg_idle, bg = '#171f26' }
 
       local function lines()
         return vim.api.nvim_win_get_cursor(0)[1] .. '/' .. vim.api.nvim_buf_line_count(0)

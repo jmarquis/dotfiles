@@ -25,3 +25,9 @@ set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 set pure_symbol_prompt "➜"
 set pure_color_prompt_on_success (set_color green)
 set -U fish_color_command '--bold'
+
+fish_add_path /home/linuxbrew/.linuxbrew/sbin
+
+export NODE_OPTIONS=--max_old_space_size=8192
+export GPG_TTY=$(tty)
+export PRETTIERD_LOCAL_PRETTIER_ONLY=1

@@ -35,7 +35,8 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
       'windwp/nvim-ts-autotag',
-      'JoosepAlviste/nvim-ts-context-commentstring'
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      'numToStr/Comment.nvim'
     },
     opts = {
       auto_install = true,
@@ -51,20 +52,19 @@ return {
       },
       autotag = {
         enable = true
+      },
+      context_commentstring = {
+        enable = true
       }
     },
     config = function(_, opts)
       require('nvim-treesitter.install').compilers = { 'gcc' }
       require('nvim-treesitter.configs').setup(opts)
+      require('ts_context_commentstring').setup {}
+      require('Comment').setup {
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      }
     end
-  },
-
-  {
-    'numToStr/Comment.nvim',
-    event = 'VeryLazy',
-    opts = {
-      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-    }
   },
 
   {

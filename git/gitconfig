@@ -20,5 +20,6 @@
 [core]
   excludesfile = ~/.gitignore
   preloadindex = true
+	symlinks = true
 [push]
   default = current

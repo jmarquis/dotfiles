@@ -112,21 +112,19 @@ return {
 
       require('lualine').setup {
         options = {
-          theme = custom_ayu
+          theme = custom_ayu,
+          section_separators = '',
+          component_separators = '',
+          icons_enabled = false
         },
         sections = {
           lualine_b = {},
           lualine_c = {
             {
-              'filetype',
-              icon_only = true,
-              separator = '',
-              padding = { left = 2, right = 0 }
-            },
-            {
               'filename',
               path = 1,
-              symbols = { modified = '*' }
+              symbols = { modified = '*' },
+              padding = { left = 2 }
             }
           },
           lualine_x = {

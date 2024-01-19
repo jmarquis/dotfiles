@@ -96,7 +96,11 @@ return {
         },
 
         buffers = {
-          prompt = '     '
+          prompt = '     ',
+          actions = {
+            ['ctrl-x'] = actions.buf_split,
+            ['ctrl-d'] = { fn = actions.buf_del, reload = true }
+          }
         },
 
         grep = {

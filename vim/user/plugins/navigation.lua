@@ -108,7 +108,7 @@ return {
         },
 
         lsp = {
-          prompt = 'piss'
+          prompt = '  → '
         }
 
       })

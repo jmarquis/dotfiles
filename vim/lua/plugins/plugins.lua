@@ -14,6 +14,7 @@ return {
     dependencies = {
       "kkharji/sqlite.lua",
       "nvim-telescope/telescope.nvim",
+      "nvim-telescope/telescope-fzf-native.nvim",
     },
     config = function()
       require("telescope").load_extension("smart_open")

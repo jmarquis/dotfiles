@@ -14,17 +14,3 @@ vim.opt.listchars = "eol:¬,tab:>·,extends:>,precedes:<,trail:·"
 vim.g.lazyvim_prettier_needs_config = true
 
 vim.g.lazyvim_php_lsp = "intelephense"
-
--- cursorline only for active window
-vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
-  callback = function()
-    if vim.bo[vim.api.nvim_get_current_buf()].filetype ~= "TelescopePrompt*" then
-      vim.opt_local.cursorline = true
-    end
-  end,
-})
-vim.api.nvim_create_autocmd("WinLeave", {
-  callback = function()
-    vim.opt_local.cursorline = false
-  end,
-})

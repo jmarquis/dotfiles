@@ -54,73 +54,97 @@ return {
         return vim.api.nvim_win_get_cursor(0)[1] .. "/" .. vim.api.nvim_buf_line_count(0)
       end
 
+      local sections = {
+        lualine_a = { "mode" },
+        lualine_b = {
+          vim.tbl_extend("force", LazyVim.lualine.root_dir(), {
+            padding = 2,
+          }),
+        },
+        lualine_c = {
+          { "filetype", icon_only = true, separator = "", padding = { left = 2, right = 0 } },
+          { LazyVim.lualine.pretty_path() },
+        },
+        lualine_x = {
+          {
+            function()
+              return require("noice").api.status.mode.get()
+            end,
+            cond = function()
+              return package.loaded["noice"] and require("noice").api.status.mode.has()
+            end,
+            color = function()
+              return LazyVim.ui.fg("Constant")
+            end,
+          },
+          {
+            "diagnostics",
+            symbols = {
+              error = icons.diagnostics.Error,
+              warn = icons.diagnostics.Warn,
+              info = icons.diagnostics.Info,
+              hint = icons.diagnostics.Hint,
+            },
+            padding = 2,
+          },
+        },
+        lualine_y = {
+          {
+            "diff",
+            symbols = {
+              added = icons.git.added,
+              modified = icons.git.modified,
+              removed = icons.git.removed,
+            },
+            source = function()
+              local gitsigns = vim.b.gitsigns_status_dict
+              if gitsigns then
+                return {
+                  added = gitsigns.added,
+                  modified = gitsigns.changed,
+                  removed = gitsigns.removed,
+                }
+              end
+            end,
+          },
+          "branch",
+        },
+        lualine_z = {
+          lines,
+          {
+            require("lazy.status").updates,
+            cond = require("lazy.status").has_updates,
+            color = function()
+              return LazyVim.ui.fg("Comment")
+            end,
+          },
+        },
+      }
+
+      local inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+      }
+
+      vim.list_extend(inactive_sections.lualine_b, sections.lualine_a)
+      vim.list_extend(inactive_sections.lualine_b, sections.lualine_b)
+      vim.list_extend(inactive_sections.lualine_b, sections.lualine_c)
+      vim.list_extend(inactive_sections.lualine_y, sections.lualine_x)
+      vim.list_extend(inactive_sections.lualine_y, sections.lualine_y)
+      vim.list_extend(inactive_sections.lualine_y, sections.lualine_z)
+
       return {
         options = {
           disabled_filetypes = { statusline = { "dashboard", "neo-tree" } },
           section_separators = "",
           component_separators = "",
         },
-        sections = {
-          lualine_c = {
-            vim.tbl_extend("force", LazyVim.lualine.root_dir(), {
-              padding = { left = 2 },
-            }),
-            { "filetype", icon_only = true, separator = "", padding = { left = 2, right = 0 } },
-            { LazyVim.lualine.pretty_path() },
-          },
-          lualine_x = {
-            {
-              function()
-                return require("noice").api.status.mode.get()
-              end,
-              cond = function()
-                return package.loaded["noice"] and require("noice").api.status.mode.has()
-              end,
-              color = function()
-                return LazyVim.ui.fg("Constant")
-              end,
-            },
-            {
-              "diagnostics",
-              symbols = {
-                error = icons.diagnostics.Error,
-                warn = icons.diagnostics.Warn,
-                info = icons.diagnostics.Info,
-                hint = icons.diagnostics.Hint,
-              },
-            },
-          },
-          lualine_y = {
-            {
-              "diff",
-              symbols = {
-                added = icons.git.added,
-                modified = icons.git.modified,
-                removed = icons.git.removed,
-              },
-              source = function()
-                local gitsigns = vim.b.gitsigns_status_dict
-                if gitsigns then
-                  return {
-                    added = gitsigns.added,
-                    modified = gitsigns.changed,
-                    removed = gitsigns.removed,
-                  }
-                end
-              end,
-            },
-          },
-          lualine_z = {
-            lines,
-            {
-              require("lazy.status").updates,
-              cond = require("lazy.status").has_updates,
-              color = function()
-                return LazyVim.ui.fg("Comment")
-              end,
-            },
-          },
-        },
+        sections = sections,
+        inactive_sections = inactive_sections,
       }
     end,
   },
@@ -220,5 +244,23 @@ return {
         vim.api.nvim_set_hl(0, hl, col)
       end
     end,
+  },
+
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
   },
 }

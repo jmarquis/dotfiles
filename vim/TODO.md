@@ -9,5 +9,7 @@
 - [X] nvim-cmp tab to complete
 - [X] nvim-cmp c-j / c-k to change options
 - [X] hide lualine in neotree window
-- [ ] Clean up statusline
+- [X] Clean up statusline
+- [X] Inactive statusline
 - [ ] Minimal command line skin
+- [ ] Telescope field color

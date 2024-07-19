@@ -12,4 +12,4 @@
 - [X] Clean up statusline
 - [X] Inactive statusline
 - [ ] Minimal command line skin
-- [ ] Telescope field color
+- [X] Telescope field color

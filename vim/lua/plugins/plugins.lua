@@ -268,4 +268,15 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+
+  {
+    "FabijanZulj/blame.nvim",
+    keys = {
+      { "<leader>gb", "<cmd>BlameToggle<cr>" },
+    },
+    opts = {
+      blame_options = { "-w" },
+      date_format = "%Y-%m-%d",
+    },
+  },
 }

@@ -189,6 +189,18 @@ return {
           require("telescope.builtin").find_files()
         end,
       },
+      {
+        "<leader><leader>",
+        function()
+          require("telescope.builtin").resume()
+        end,
+      },
+      {
+        "<leader>,",
+        function()
+          require("telescope.builtin").pickers()
+        end,
+      },
     },
     opts = {
       defaults = {

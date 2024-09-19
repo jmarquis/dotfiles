@@ -5,14 +5,20 @@ alias gdiff="gist -t diff"
 alias g="git"
 alias vm="mosh vm -- sh -c 'tmux -u a || tmux -u'"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if test -e /opt/homebrew/bin/brew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+end
+
+if test -e /home/linuxbrew/.linuxbrew/bin/brew
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+end
 
 if type -q rvm
-  rvm default
+    rvm default
 end
 
 if type -q rbenv
-  status --is-interactive; and rbenv init - fish | source
+    status --is-interactive; and rbenv init - fish | source
 end
 
 # --files: List files that would be searched but do not search
@@ -24,7 +30,7 @@ set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 
 set pure_symbol_prompt "➜"
 set pure_color_prompt_on_success (set_color green)
-set -U fish_color_command '--bold'
+set -U fish_color_command --bold
 
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
 

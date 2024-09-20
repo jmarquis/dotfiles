@@ -3,3 +3,4 @@
 *.sql.gz
 *.vim
 .DS_Store
+phpcs.xml

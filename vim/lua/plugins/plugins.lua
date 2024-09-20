@@ -302,5 +302,9 @@ return {
       require('nvim-treesitter.install').compilers = { 'gcc-6', 'gcc', 'clang++', 'clang' }
       require("nvim-treesitter.configs").setup(opts)
     end,
+  },
+
+  {
+    'tpope/vim-sleuth'
   }
 }

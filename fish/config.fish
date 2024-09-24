@@ -63,7 +63,7 @@ if status is-interactive
 
         function zellij_pane_name_update_post --on-event fish_postexec
             if set -q ZELLIJ
-                sleep 0.00001 && zellij action rename-pane fish
+                sleep 0.001 && zellij action rename-pane fish
             end
         end
 

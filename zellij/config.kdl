@@ -61,3 +61,4 @@ theme "tokyo-night"
 default_layout "compact"
 default_mode "locked"
 copy_on_select false
+default_shell "/usr/local/bin/fish"

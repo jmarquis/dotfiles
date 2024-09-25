@@ -265,24 +265,6 @@ return {
   },
 
   {
-    "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-    },
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
-  },
-
-  {
     "FabijanZulj/blame.nvim",
     keys = {
       { "<leader>gb", "<cmd>BlameToggle<cr>" },
@@ -294,17 +276,46 @@ return {
   },
 
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     config = function(_, opts)
       if type(opts.ensure_installed) == "table" then
         opts.ensure_installed = LazyVim.dedup(opts.ensure_installed)
       end
-      require('nvim-treesitter.install').compilers = { 'gcc-6', 'gcc', 'clang++', 'clang' }
+      require("nvim-treesitter.install").compilers = { "gcc-6", "gcc", "clang++", "clang" }
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
 
+  { "tpope/vim-sleuth" },
+
   {
-    'tpope/vim-sleuth'
-  }
+    "mrjones2014/smart-splits.nvim",
+    lazy = false,
+    keys = {
+      {
+        "<c-h>",
+        function()
+          require("smart-splits").move_cursor_left()
+        end,
+      },
+      {
+        "<c-j>",
+        function()
+          require("smart-splits").move_cursor_down()
+        end,
+      },
+      {
+        "<c-k>",
+        function()
+          require("smart-splits").move_cursor_up()
+        end,
+      },
+      {
+        "<c-l>",
+        function()
+          require("smart-splits").move_cursor_right()
+        end,
+      },
+    },
+  },
 }

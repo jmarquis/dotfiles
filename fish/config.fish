@@ -37,38 +37,3 @@ fish_add_path /home/linuxbrew/.linuxbrew/sbin
 export NODE_OPTIONS=--max_old_space_size=8192
 export GPG_TTY=$(tty)
 export PRETTIERD_LOCAL_PRETTIER_ONLY=1
-
-if status is-interactive
-    if type -q zellij
-
-        function zellij_tab_name_update --on-variable PWD
-            if set -q ZELLIJ
-                set tab_name $PWD
-                if test "$tab_name" = "$HOME"
-                    set tab_name "~"
-                else
-                    set tab_name (basename "$tab_name")
-                end
-                command nohup zellij action rename-tab $tab_name >/dev/null 2>&1 &
-            end
-        end
-
-        function zellij_pane_name_update_pre --on-event fish_preexec
-            if set -q ZELLIJ
-                set -l cmd_line (string split " " -- $argv)
-                set -l process_name $cmd_line[1]
-                zellij action rename-pane $process_name
-            end
-        end
-
-        function zellij_pane_name_update_post --on-event fish_postexec
-            if set -q ZELLIJ
-                sleep 0.001 && zellij action rename-pane fish
-            end
-        end
-
-        zellij_tab_name_update
-        zellij_pane_name_update_post
-
-    end
-end

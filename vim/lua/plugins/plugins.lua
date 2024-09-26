@@ -318,4 +318,9 @@ return {
       },
     },
   },
+
+  {
+    "tummetott/reticle.nvim",
+    config = true,
+  },
 }

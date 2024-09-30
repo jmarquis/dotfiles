@@ -42,11 +42,7 @@ return {
         ["<c-j>"] = cmp.mapping.select_next_item(),
         ["<c-k>"] = cmp.mapping.select_prev_item(),
         ["<tab>"] = cmp.mapping.confirm(),
-        ["<cr>"] = cmp.mapping({
-          i = function(fallback)
-            fallback()
-          end,
-        }),
+        ["<cr>"] = cmp.config.disable,
       })
     end,
   },
@@ -181,7 +177,7 @@ return {
       {
         "'",
         function()
-          require("telescope.builtin").lsp_document_symbols()
+          require("telescope.builtin").lsp_document_symbols({ symbols = 'method' })
         end,
       },
       {

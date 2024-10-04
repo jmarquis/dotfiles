@@ -1,0 +1,7 @@
+[[manager.prepend_keymap]]
+on = "<esc>"
+run = 'quit'
+
+[[manager.prepend_keymap]]
+on = ";"
+run = 'quit'

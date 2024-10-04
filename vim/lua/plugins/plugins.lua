@@ -151,10 +151,30 @@ return {
     end,
   },
 
+  { "jeetsukumaran/vim-indentwise" },
+
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
     keys = {
-      { "<c-g>", "<cmd>Neotree toggle<cr>" },
+      {
+        "<leader>E",
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
+        "<leader>e",
+        "<cmd>Yazi toggle<cr>",
+        desc = "Open the file manager in nvim's working directory" ,
+      },
+    },
+    opts = {
+      open_for_directories = true,
+      keymaps = {
+        show_help = '<f1>',
+      },
     },
   },
 

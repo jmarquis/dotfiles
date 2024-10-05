@@ -164,24 +164,25 @@ return {
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
   {
-    "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
-    keys = {
-      {
-        "<leader>E",
-        "<cmd>Yazi<cr>",
-        desc = "Open yazi at the current file",
-      },
-      {
-        "<leader>e",
-        "<cmd>Yazi toggle<cr>",
-        desc = "Open the file manager in nvim's working directory",
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    opts = {
+      view = {
+        width = 40,
       },
     },
-    opts = {
-      open_for_directories = true,
-      keymaps = {
-        show_help = "<f1>",
+    keys = {
+      {
+        "<leader>e",
+        function()
+          require("nvim-tree.api").tree.toggle()
+        end,
+      },
+      {
+        "<leader>E",
+        function()
+          require("nvim-tree.api").tree.find_file({ open = true, focus = true })
+        end,
       },
     },
   },

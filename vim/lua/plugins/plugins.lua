@@ -70,6 +70,14 @@ return {
         lualine_x = {
           {
             function()
+              return require("nvim-navic").get_location()
+            end,
+            cond = function()
+              return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+            end,
+          },
+          {
+            function()
               return require("noice").api.status.mode.get()
             end,
             cond = function()
@@ -167,13 +175,13 @@ return {
       {
         "<leader>e",
         "<cmd>Yazi toggle<cr>",
-        desc = "Open the file manager in nvim's working directory" ,
+        desc = "Open the file manager in nvim's working directory",
       },
     },
     opts = {
       open_for_directories = true,
       keymaps = {
-        show_help = '<f1>',
+        show_help = "<f1>",
       },
     },
   },
@@ -197,7 +205,7 @@ return {
       {
         "'",
         function()
-          require("telescope.builtin").lsp_document_symbols({ symbols = 'method' })
+          require("telescope.builtin").lsp_document_symbols({ symbols = "method" })
         end,
       },
       {

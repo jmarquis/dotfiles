@@ -1,2 +1,2 @@
-- [ ] project-specific config (disable autoformat for work)
-- [ ] better file tree
+- [X] project-specific config (disable autoformat for work)
+- [X] better file tree

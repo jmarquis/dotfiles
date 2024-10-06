@@ -10,23 +10,22 @@ return {
   { "akinsho/bufferline.nvim", enabled = false },
 
   {
-    "danielfalk/smart-open.nvim",
-    dependencies = {
-      "kkharji/sqlite.lua",
-      "nvim-telescope/telescope.nvim",
-      "nvim-telescope/telescope-fzf-native.nvim",
-      "nvim-telescope/telescope-fzy-native.nvim",
-    },
-    config = function()
-      require("telescope").load_extension("smart_open")
-    end,
-  },
-
-  {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "<c-k>", mode = "i", false }
+      keys[#keys + 1] = {
+        "<leader>gd",
+        "<cmd>FzfLua lsp_definitions ignore_current_line=true<cr>",
+        desc = "Goto Definition (list)",
+        has = "definition",
+      }
+      keys[#keys + 1] = {
+        "gD",
+        "<cmd>FzfLua lsp_definitions ignore_current_line=true<cr>",
+        desc = "Goto Definition (list)",
+        has = "definition",
+      }
       opts.servers["ruby_lsp"] = {
         mason = false,
         cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
@@ -187,65 +186,139 @@ return {
     },
   },
 
+  { "nvim-telescope/telescope.nvim", enabled = false },
+
   {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "danielfalk/smart-open.nvim",
-      "kkharji/sqlite.lua",
+    "ibhagwan/fzf-lua",
+    opts = {
+      winopts = {
+        border = { " ", " ", " ", " ", " ", " ", " ", " " },
+        preview = {
+          title = false,
+        },
+      },
+      files = {
+        winopts = {
+          title = { { "", "" } },
+        },
+        actions = {
+          ["ctrl-x"] = require("fzf-lua.actions").file_split,
+        },
+        header = false,
+        no_header_i = true,
+      },
+      buffers = {
+        winopts = {
+          title = { { "", "" } },
+        },
+        actions = {
+          ["ctrl-x"] = require("fzf-lua.actions").buf_split,
+        },
+      },
+      grep = {
+        winopts = {
+          title = { { "", "" } },
+        },
+        actions = {
+          ["ctrl-x"] = require("fzf-lua.actions").file_split,
+        },
+        header = false,
+        no_header_i = true,
+      },
+      lsp = {
+        winopts = {
+          title = { { "", "" } },
+        },
+        actions = {
+          ["ctrl-x"] = require("fzf-lua.actions").file_split,
+        },
+      },
     },
     keys = {
       {
         ";",
         function()
-          require("telescope").extensions.smart_open.smart_open({
-            cwd_only = true,
-            filename_first = false,
-          })
-        end,
-      },
-      {
-        "'",
-        function()
-          require("telescope.builtin").lsp_document_symbols({ symbols = "method" })
+          require("fzf-lua").buffers()
         end,
       },
       {
         "<c-p>",
         function()
-          require("telescope.builtin").find_files()
+          require("fzf-lua").files()
         end,
       },
       {
         "<leader><leader>",
         function()
-          require("telescope.builtin").resume()
+          require("fzf-lua").resume()
         end,
       },
       {
-        "<leader>,",
+        "<leader>k",
         function()
-          require("telescope.builtin").pickers()
+          require("fzf-lua").grep_cword()
         end,
       },
     },
-    opts = {
-      defaults = {
-        layout_config = {
-          prompt_position = "top",
-        },
-        results_title = false,
-        prompt_title = false,
-        sorting_strategy = "ascending",
-        mappings = {
-          i = {
-            ["<esc>"] = require("telescope.actions").close,
-            ["<c-j>"] = require("telescope.actions").move_selection_next,
-            ["<c-k>"] = require("telescope.actions").move_selection_previous,
-          },
-        },
-      },
-    },
   },
+
+  --   dependencies = {
+  --     "danielfalk/smart-open.nvim",
+  --     "kkharji/sqlite.lua",
+  --   },
+  --   keys = {
+  --     {
+  --       ";",
+  --       function()
+  --         require("telescope").extensions.smart_open.smart_open({
+  --           cwd_only = true,
+  --           filename_first = false,
+  --         })
+  --       end,
+  --     },
+  --     {
+  --       "'",
+  --       function()
+  --         require("telescope.builtin").lsp_document_symbols({ symbols = "method" })
+  --       end,
+  --     },
+  --     {
+  --       "<c-p>",
+  --       function()
+  --         require("telescope.builtin").find_files()
+  --       end,
+  --     },
+  --     {
+  --       "<leader><leader>",
+  --       function()
+  --         require("telescope.builtin").resume()
+  --       end,
+  --     },
+  --     {
+  --       "<leader>,",
+  --       function()
+  --         require("telescope.builtin").pickers()
+  --       end,
+  --     },
+  --   },
+  --   opts = {
+  --     defaults = {
+  --       layout_config = {
+  --         prompt_position = "top",
+  --       },
+  --       results_title = false,
+  --       prompt_title = false,
+  --       sorting_strategy = "ascending",
+  --       mappings = {
+  --         i = {
+  --           ["<esc>"] = require("telescope.actions").close,
+  --           ["<c-j>"] = require("telescope.actions").move_selection_next,
+  --           ["<c-k>"] = require("telescope.actions").move_selection_previous,
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 
   {
     "echasnovski/mini.surround",

@@ -16,3 +16,5 @@ vim.opt.listchars = "eol:¬,tab:>·,extends:>,precedes:<,trail:·"
 vim.g.lazyvim_prettier_needs_config = true
 
 vim.g.lazyvim_php_lsp = "intelephense"
+
+vim.g.lazyvim_picker = "fzf"

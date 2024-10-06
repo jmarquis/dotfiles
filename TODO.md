@@ -6,3 +6,4 @@
   - [X] resume
   - [X] grep word under cursor
   - [ ] combined buffer + files picker
+- [ ] install fzf and fd on vm

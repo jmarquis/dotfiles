@@ -238,6 +238,7 @@ return {
       {
         ";",
         function()
+          -- TODO: combine files into this?
           require("fzf-lua").buffers()
         end,
       },
@@ -257,6 +258,12 @@ return {
         "<leader>k",
         function()
           require("fzf-lua").grep_cword()
+        end,
+      },
+      {
+        "'",
+        function()
+          require("fzf-lua").lsp_document_symbols()
         end,
       },
     },

@@ -34,6 +34,8 @@ set -U fish_color_command --bold
 
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
 
+set -g async_prompt_functions _pure_prompt_git
+
 export NODE_OPTIONS=--max_old_space_size=8192
 export GPG_TTY=$(tty)
 export PRETTIERD_LOCAL_PRETTIER_ONLY=1

@@ -7,6 +7,7 @@ return {
     },
   },
 
+  -- buffer tabs don't belong in vim
   { "akinsho/bufferline.nvim", enabled = false },
 
   {
@@ -14,6 +15,9 @@ return {
     opts = function(_, opts)
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "<c-k>", mode = "i", false }
+
+      -- use <leader>gd or gD to open definitions in fzf
+      -- useful to preview & split
       keys[#keys + 1] = {
         "<leader>gd",
         "<cmd>FzfLua lsp_definitions ignore_current_line=true<cr>",
@@ -26,6 +30,8 @@ return {
         desc = "Goto Definition (list)",
         has = "definition",
       }
+
+      -- make ruby_lsp play nice with rbenv
       opts.servers["ruby_lsp"] = {
         mason = false,
         cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
@@ -33,6 +39,7 @@ return {
     end,
   },
 
+  -- autocomplete keymap overrides
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
@@ -46,6 +53,7 @@ return {
     end,
   },
 
+  -- hella lualine customizations
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
@@ -158,10 +166,16 @@ return {
     end,
   },
 
+  -- motions for indentation
+  -- [- / ]- to go to previous/next line with less indentation
+  -- [+ / ]+ to go to previous/next line with more indentation
+  -- [= / ]= to go to previous/next line with equal indentation
   { "jeetsukumaran/vim-indentwise" },
 
+  -- disable neo-tree, use nvim-tree instead
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 
+  -- way faster than neo-tree
   {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
@@ -186,12 +200,15 @@ return {
     },
   },
 
+  -- disable telescope, use fzf-lua instead
   { "nvim-telescope/telescope.nvim", enabled = false },
 
+  -- way faster than telescope
   {
     "ibhagwan/fzf-lua",
     opts = {
       winopts = {
+        -- blank border just serves as floating window padding
         border = { " ", " ", " ", " ", " ", " ", " ", " " },
         preview = {
           title = false,
@@ -237,6 +254,7 @@ return {
     keys = {
       {
         "<leader>;",
+        -- combine buffers and files
         function()
           local cmd = ""
           local buffers = {}
@@ -294,64 +312,7 @@ return {
     },
   },
 
-  --   dependencies = {
-  --     "danielfalk/smart-open.nvim",
-  --     "kkharji/sqlite.lua",
-  --   },
-  --   keys = {
-  --     {
-  --       ";",
-  --       function()
-  --         require("telescope").extensions.smart_open.smart_open({
-  --           cwd_only = true,
-  --           filename_first = false,
-  --         })
-  --       end,
-  --     },
-  --     {
-  --       "'",
-  --       function()
-  --         require("telescope.builtin").lsp_document_symbols({ symbols = "method" })
-  --       end,
-  --     },
-  --     {
-  --       "<c-p>",
-  --       function()
-  --         require("telescope.builtin").find_files()
-  --       end,
-  --     },
-  --     {
-  --       "<leader><leader>",
-  --       function()
-  --         require("telescope.builtin").resume()
-  --       end,
-  --     },
-  --     {
-  --       "<leader>,",
-  --       function()
-  --         require("telescope.builtin").pickers()
-  --       end,
-  --     },
-  --   },
-  --   opts = {
-  --     defaults = {
-  --       layout_config = {
-  --         prompt_position = "top",
-  --       },
-  --       results_title = false,
-  --       prompt_title = false,
-  --       sorting_strategy = "ascending",
-  --       mappings = {
-  --         i = {
-  --           ["<esc>"] = require("telescope.actions").close,
-  --           ["<c-j>"] = require("telescope.actions").move_selection_next,
-  --           ["<c-k>"] = require("telescope.actions").move_selection_previous,
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
-
+  -- override change surround keymap
   {
     "echasnovski/mini.surround",
     opts = {
@@ -361,6 +322,7 @@ return {
     },
   },
 
+  -- gimme back my s key
   {
     "folke/flash.nvim",
     keys = {
@@ -368,32 +330,7 @@ return {
     },
   },
 
-  {
-    "catppuccin/nvim",
-    config = function()
-      local colors = require("catppuccin.palettes").get_palette()
-      local TelescopeColor = {
-        TelescopeMatching = { fg = colors.flamingo },
-        TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-
-        TelescopePromptPrefix = { bg = colors.surface0 },
-        TelescopePromptNormal = { bg = colors.surface0 },
-        TelescopeResultsNormal = { bg = colors.mantle },
-        TelescopePreviewNormal = { bg = colors.mantle },
-        TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-        TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-        TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-        TelescopePromptTitle = { bg = colors.surface0, fg = colors.surface0 },
-        TelescopeResultsTitle = { fg = colors.mantle },
-        TelescopePreviewTitle = { bg = colors.mantle, fg = colors.mantle },
-      }
-
-      for hl, col in pairs(TelescopeColor) do
-        vim.api.nvim_set_hl(0, hl, col)
-      end
-    end,
-  },
-
+  -- git blame pane (<leader>gb)
   {
     "FabijanZulj/blame.nvim",
     keys = {
@@ -416,8 +353,10 @@ return {
     end,
   },
 
+  -- automatic indentation detection, etc
   { "tpope/vim-sleuth" },
 
+  -- vim + tmux split navigation
   {
     "mrjones2014/smart-splits.nvim",
     lazy = false,
@@ -449,6 +388,7 @@ return {
     },
   },
 
+  -- only show cursorline in active buffer
   {
     "tummetott/reticle.nvim",
     config = true,

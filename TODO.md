@@ -1,9 +1,9 @@
 - [X] project-specific config (disable autoformat for work)
 - [X] better file tree
-- [ ] fzf-lua
+- [X] fzf-lua
   - [X] fix c-x
   - [X] styling / get rid of extra text
   - [X] resume
   - [X] grep word under cursor
-  - [ ] combined buffer + files picker
+  - [X] combined buffer + files picker
 - [ ] install fzf and fd on vm

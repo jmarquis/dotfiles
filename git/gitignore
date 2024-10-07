@@ -5,3 +5,4 @@
 .DS_Store
 phpcs.xml
 .php-cs-fixer.cache
+.lazy.lua

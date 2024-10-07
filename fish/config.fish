@@ -31,6 +31,7 @@ set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --follow --glob "!.git/*"'
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
 
 set -g async_prompt_functions _pure_prompt_git
+set -U fish_color_command --bold
 
 export NODE_OPTIONS=--max_old_space_size=8192
 export GPG_TTY=$(tty)

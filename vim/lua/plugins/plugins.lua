@@ -236,7 +236,7 @@ return {
     },
     keys = {
       {
-        ";",
+        "<leader>;",
         function()
           local cmd = ""
           local buffers = {}

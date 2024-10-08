@@ -183,6 +183,15 @@ return {
       view = {
         width = 40,
       },
+      filesystem_watchers = {
+        ignore_dirs = {
+          "node_modules",
+          "vendor"
+        }
+      },
+      git = {
+        timeout = 2000
+      }
     },
     keys = {
       {

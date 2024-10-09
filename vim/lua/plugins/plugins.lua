@@ -73,8 +73,6 @@ return {
         lualine_c = {
           { "filetype", icon_only = true, separator = "", padding = { left = 2, right = 0 } },
           { LazyVim.lualine.pretty_path() },
-        },
-        lualine_x = {
           {
             function()
               return require("nvim-navic").get_location()
@@ -83,6 +81,8 @@ return {
               return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
             end,
           },
+        },
+        lualine_x = {
           {
             function()
               return require("noice").api.status.mode.get()
@@ -299,25 +299,36 @@ return {
 
           require("fzf-lua").files({ cmd = cmd, fzf_opts = { ["--tiebreak"] = "index" } })
         end,
+        desc = "Find buffers & files"
       },
       {
         "<leader><leader>",
         function()
           require("fzf-lua").resume()
         end,
+        desc = "Open last picker"
       },
       {
         "<leader>k",
         function()
           require("fzf-lua").grep_cword()
         end,
+        desc = "Grep cword"
       },
       {
         "'",
         function()
           require("fzf-lua").lsp_document_symbols()
         end,
+        desc = "Document symbols"
       },
+      {
+        "<leader>/",
+        function ()
+          require("fzf-lua").live_grep_native({ rg_glob = true })
+        end,
+        desc = "Grep (root dir)"
+      }
     },
   },
 

@@ -264,7 +264,7 @@ return {
     },
     keys = {
       {
-        "<leader>;",
+        ";",
         -- combine buffers and files
         function()
           local cmd = ""

@@ -44,12 +44,14 @@ return {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+      opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
         ["<c-j>"] = cmp.mapping.select_next_item(),
         ["<c-k>"] = cmp.mapping.select_prev_item(),
         ["<tab>"] = cmp.mapping.confirm(),
-        ["<cr>"] = cmp.config.disable,
+        ["<CR>"] = cmp.config.disable,
       })
+
+      return opts
     end,
   },
 
@@ -186,12 +188,12 @@ return {
       filesystem_watchers = {
         ignore_dirs = {
           "node_modules",
-          "vendor"
-        }
+          "vendor",
+        },
       },
       git = {
-        timeout = 2000
-      }
+        timeout = 2000,
+      },
     },
     keys = {
       {
@@ -299,36 +301,36 @@ return {
 
           require("fzf-lua").files({ cmd = cmd, fzf_opts = { ["--tiebreak"] = "index" } })
         end,
-        desc = "Find buffers & files"
+        desc = "Find buffers & files",
       },
       {
         "<leader><leader>",
         function()
           require("fzf-lua").resume()
         end,
-        desc = "Open last picker"
+        desc = "Open last picker",
       },
       {
         "<leader>k",
         function()
           require("fzf-lua").grep_cword()
         end,
-        desc = "Grep cword"
+        desc = "Grep cword",
       },
       {
         "'",
         function()
           require("fzf-lua").lsp_document_symbols()
         end,
-        desc = "Document symbols"
+        desc = "Document symbols",
       },
       {
         "<leader>/",
-        function ()
+        function()
           require("fzf-lua").live_grep_native({ rg_glob = true })
         end,
-        desc = "Grep (root dir)"
-      }
+        desc = "Grep (root dir)",
+      },
     },
   },
 

@@ -415,4 +415,12 @@ return {
     "tummetott/reticle.nvim",
     config = true,
   },
+
+  -- gaip= to align stuff with the = sign
+  {
+    "echasnovski/mini.align",
+    version = false,
+    config = true
+  },
+
 }

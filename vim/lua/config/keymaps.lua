@@ -7,3 +7,6 @@ vim.keymap.set("i", "<c-h>", "<Left>")
 vim.keymap.set("i", "<c-j>", "<Down>")
 vim.keymap.set("i", "<c-k>", "<Up>")
 vim.keymap.set("i", "<c-l>", "<Right>")
+
+vim.keymap.del("i", "<A-j>")
+vim.keymap.del("i", "<A-k>")

@@ -8,6 +8,7 @@ vim.opt.relativenumber = false
 vim.opt.laststatus = 2
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.ttimeoutlen = 0
 
 -- show invisibles
 vim.opt.listchars = "eol:¬,tab:>·,extends:>,precedes:<,trail:·"

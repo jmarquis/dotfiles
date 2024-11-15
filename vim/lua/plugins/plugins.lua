@@ -47,7 +47,7 @@ return {
       opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
         ["<c-j>"] = cmp.mapping.select_next_item(),
         ["<c-k>"] = cmp.mapping.select_prev_item(),
-        ["<tab>"] = cmp.mapping.confirm(),
+        ["<Tab>"] = cmp.mapping.confirm(),
         ["<CR>"] = cmp.config.disable,
       })
 

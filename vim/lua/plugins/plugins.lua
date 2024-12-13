@@ -41,18 +41,25 @@ return {
 
   -- autocomplete keymap overrides
   {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      local cmp = require("cmp")
-      opts.mapping = vim.tbl_deep_extend("force", opts.mapping, {
-        ["<c-j>"] = cmp.mapping.select_next_item(),
-        ["<c-k>"] = cmp.mapping.select_prev_item(),
-        ["<Tab>"] = cmp.mapping.confirm(),
-        ["<CR>"] = cmp.config.disable,
-      })
-
-      return opts
-    end,
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "super-tab",
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          "snippet_forward",
+          "fallback",
+        },
+      },
+    },
   },
 
   -- hella lualine customizations
@@ -93,7 +100,7 @@ return {
               return package.loaded["noice"] and require("noice").api.status.mode.has()
             end,
             color = function()
-              return LazyVim.ui.fg("Constant")
+              return Snacks.util.color("Constant")
             end,
           },
           {
@@ -134,7 +141,7 @@ return {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
             color = function()
-              return LazyVim.ui.fg("Comment")
+              return Snacks.util.color("Comment")
             end,
           },
         },
@@ -211,10 +218,6 @@ return {
     },
   },
 
-  -- disable telescope, use fzf-lua instead
-  { "nvim-telescope/telescope.nvim", enabled = false },
-
-  -- way faster than telescope
   {
     "ibhagwan/fzf-lua",
     opts = {
@@ -420,12 +423,11 @@ return {
   {
     "echasnovski/mini.align",
     version = false,
-    config = true
+    config = true,
   },
 
   {
-    'LunarVim/bigfile.nvim',
-    config = true
-  }
-
+    "LunarVim/bigfile.nvim",
+    config = true,
+  },
 }

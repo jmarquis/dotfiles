@@ -100,7 +100,7 @@ return {
               return package.loaded["noice"] and require("noice").api.status.mode.has()
             end,
             color = function()
-              return Snacks.util.color("Constant")
+              return Snacks.util.color("TSConstant")
             end,
           },
           {
@@ -141,7 +141,7 @@ return {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
             color = function()
-              return Snacks.util.color("Comment")
+              return Snacks.util.color("TSComment")
             end,
           },
         },

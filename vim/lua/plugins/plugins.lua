@@ -425,9 +425,4 @@ return {
     version = false,
     config = true,
   },
-
-  {
-    "LunarVim/bigfile.nvim",
-    config = true,
-  },
 }

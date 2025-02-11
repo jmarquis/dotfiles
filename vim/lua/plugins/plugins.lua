@@ -36,6 +36,16 @@ return {
         mason = false,
         cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
       }
+
+      opts.servers["vtsls"] = {
+        settings = {
+          typescript = {
+            tsserver = {
+              maxTsServerMemory = 8192,
+            },
+          },
+        },
+      }
     end,
   },
 

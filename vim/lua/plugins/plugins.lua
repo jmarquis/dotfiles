@@ -340,7 +340,7 @@ return {
       {
         "<leader>/",
         function()
-          require("fzf-lua").live_grep_native({ rg_glob = true })
+          require("fzf-lua").live_grep_glob()
         end,
         desc = "Grep (root dir)",
       },

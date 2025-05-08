@@ -445,4 +445,14 @@ return {
     version = false,
     config = true,
   },
+
+  -- TODO: get rid of this when lazyvim updates to use mason 2.0
+  {
+    "mason-org/mason.nvim",
+    version = "1.11.0",
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    version = "1.32.0",
+  },
 }

@@ -36,7 +36,7 @@ return {
       }
       keys[#keys + 1] = {
         "gD",
-        "<cmd>FzfLua lsp_definitions ignore_current_line=true<cr>",
+        "<cmd>FzfLua lsp_definitions ignore_current_line=true jump_to_single_result=false<cr>",
         desc = "Goto Definition (list)",
         has = "definition",
       }
@@ -444,5 +444,14 @@ return {
     "echasnovski/mini.align",
     version = false,
     config = true,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        php = { "phpcbf" },
+      },
+    },
   },
 }

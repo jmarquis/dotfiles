@@ -13,6 +13,9 @@ vim.opt.ttimeoutlen = 0
 -- show invisibles
 vim.opt.listchars = "eol:¬,tab:>·,extends:>,precedes:<,trail:·"
 
+-- keep current line visible when opening splits
+vim.opt.splitkeep = "cursor"
+
 -- only run prettier when there's a config file
 vim.g.lazyvim_prettier_needs_config = true
 

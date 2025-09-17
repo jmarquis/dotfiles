@@ -359,7 +359,7 @@ return {
 
   -- override change surround keymap
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = {
       mappings = {
         replace = "cs",
@@ -387,16 +387,16 @@ return {
     },
   },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    config = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        opts.ensure_installed = LazyVim.dedup(opts.ensure_installed)
-      end
-      require("nvim-treesitter.install").compilers = { "gcc-6", "gcc", "clang++", "clang" }
-      require("nvim-treesitter.configs").setup(opts)
-    end,
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   config = function(_, opts)
+  --     if type(opts.ensure_installed) == "table" then
+  --       opts.ensure_installed = LazyVim.dedup(opts.ensure_installed)
+  --     end
+  --     require("nvim-treesitter.install").compilers = { "gcc-6", "gcc", "clang++", "clang" }
+  --     -- require("nvim-treesitter.configs").setup(opts)
+  --   end,
+  -- },
 
   -- automatic indentation detection, etc
   { "tpope/vim-sleuth" },
@@ -441,7 +441,7 @@ return {
 
   -- gaip= to align stuff with the = sign
   {
-    "echasnovski/mini.align",
+    "nvim-mini/mini.align",
     version = false,
     config = true,
   },

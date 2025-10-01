@@ -295,7 +295,12 @@ return {
           for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
             if vim.api.nvim_buf_is_loaded(bufnr) then
               local bufname = vim.api.nvim_buf_get_name(bufnr)
-              if bufname ~= "" then
+              if
+                bufname ~= ""
+                and bufname ~= nil
+                and vim.api.nvim_buf_is_loaded(bufnr)
+                and vim.api.nvim_buf_get_option(bufnr, "buflisted")
+              then
                 bufname = vim.fn.fnamemodify(bufname, ":~:.")
                 if
                   string.find(vim.fs.basename(bufname), "NvimTree_") ~= 1 -- filter out nvim tree buffer

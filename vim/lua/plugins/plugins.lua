@@ -56,6 +56,8 @@ return {
           },
         },
       }
+
+      opts.diagnostics.underline = false
     end,
   },
 

@@ -7,3 +7,4 @@ phpcs.xml
 .phpcs.xml
 .php-cs-fixer.cache
 .lazy.lua
+.tool-versions

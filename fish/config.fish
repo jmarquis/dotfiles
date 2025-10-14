@@ -3,7 +3,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias gdiff="gist -t diff"
 alias g="git"
-alias vm="et -x vm -c 'tmux a || tmux'"
+alias vm="et -x vm -c 'tmux -CC new -A -s main'"
 
 if test -e /opt/homebrew/bin/brew
     eval "$(/opt/homebrew/bin/brew shellenv)"

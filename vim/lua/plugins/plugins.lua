@@ -28,6 +28,12 @@ return {
       },
       foreground = "saturated",
       dimInactive = true,
+      overrides = function(colors)
+        return {
+          LspReferenceText = { bg = colors.palette.pearlBlue1 },
+          LspReferenceWrite = { bg = colors.palette.pearlBlue1, underline = true },
+        }
+      end,
     },
   },
 

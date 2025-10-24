@@ -13,7 +13,21 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "kanso",
+    },
+  },
+
+  {
+    "webhooked/kanso.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      background = {
+        dark = "mist",
+        light = "pearl",
+      },
+      foreground = "saturated",
+      dimInactive = true,
     },
   },
 

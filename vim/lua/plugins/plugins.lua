@@ -21,20 +21,33 @@ return {
     "webhooked/kanso.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-      background = {
-        dark = "mist",
-        light = "pearl",
-      },
-      foreground = "saturated",
-      dimInactive = true,
-      overrides = function(colors)
-        return {
-          LspReferenceText = { bg = colors.palette.pearlBlue1 },
-          LspReferenceWrite = { bg = colors.palette.pearlBlue1, underline = true },
-        }
-      end,
-    },
+    config = function()
+      require("kanso").setup({
+        background = {
+          dark = "mist",
+          light = "pearl",
+        },
+        foreground = "saturated",
+        dimInactive = true,
+        overrides = function(colors)
+          return {
+            -- TODO: make these work for themes other than pearl
+            LspReferenceText = { bg = colors.palette.pearlBlue1 },
+            LspReferenceWrite = { bg = colors.palette.pearlBlue1, underline = true },
+          }
+        end,
+        colors = {
+          theme = {
+            pearl = {
+              ui = {
+                bg_dim = require("kanso.colors").setup().palette.pearlWhite1,
+              },
+            },
+          },
+        },
+      })
+    end,
+    opts = {},
   },
 
   -- buffer tabs don't belong in vim
@@ -413,17 +426,6 @@ return {
       date_format = "%Y-%m-%d",
     },
   },
-
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   config = function(_, opts)
-  --     if type(opts.ensure_installed) == "table" then
-  --       opts.ensure_installed = LazyVim.dedup(opts.ensure_installed)
-  --     end
-  --     require("nvim-treesitter.install").compilers = { "gcc-6", "gcc", "clang++", "clang" }
-  --     -- require("nvim-treesitter.configs").setup(opts)
-  --   end,
-  -- },
 
   -- automatic indentation detection, etc
   { "tpope/vim-sleuth" },

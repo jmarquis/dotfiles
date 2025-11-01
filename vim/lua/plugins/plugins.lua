@@ -55,43 +55,42 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "<c-k>", mode = "i", false }
-
-      -- use <leader>gd or gD to open definitions in fzf
-      -- useful to preview & split
-      keys[#keys + 1] = {
-        "<leader>gd",
-        "<cmd>FzfLua lsp_definitions ignore_current_line=true<cr>",
-        desc = "Goto Definition (list)",
-        has = "definition",
-      }
-      keys[#keys + 1] = {
-        "gD",
-        "<cmd>FzfLua lsp_definitions ignore_current_line=true jump_to_single_result=false<cr>",
-        desc = "Goto Definition (list)",
-        has = "definition",
-      }
-
-      -- make ruby_lsp play nice with rbenv
-      opts.servers["ruby_lsp"] = {
-        mason = false,
-        cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
-      }
-
-      opts.servers["vtsls"] = {
-        settings = {
-          typescript = {
-            tsserver = {
-              maxTsServerMemory = 8192,
+    opts = {
+      servers = {
+        ["*"] = {
+          keys = {
+            { "<c-k>", mode = "i", false },
+            {
+              "<leader>gd",
+              "<cmd>FzfLua lsp_definitions ignore_current_line=true<cr>",
+              desc = "Goto Definition (list)",
+              has = "definition",
+            },
+            {
+              "gD",
+              "<cmd>FzfLua lsp_definitions ignore_current_line=true jump_to_single_result=false<cr>",
+              desc = "Goto Definition (list)",
+              has = "definition",
             },
           },
         },
-      }
 
-      opts.diagnostics.underline = false
-    end,
+        ruby_lsp = {
+          mason = false,
+          cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+        },
+
+        vstls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                maxTsServerMemory = 8192,
+              },
+            },
+          },
+        },
+      },
+    },
   },
 
   -- autocomplete keymap overrides
@@ -481,6 +480,13 @@ return {
       formatters_by_ft = {
         php = { "phpcbf" },
       },
+    },
+  },
+
+  {
+    "snacks.nvim",
+    opts = {
+      scroll = { enabled = false },
     },
   },
 }

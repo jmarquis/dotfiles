@@ -76,8 +76,7 @@ return {
         },
 
         ruby_lsp = {
-          mason = false,
-          cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+          cmd = { "bundle", "exec", "ruby-lsp" },
         },
 
         vstls = {

@@ -388,9 +388,18 @@ return {
       {
         "<leader>/",
         function()
-          require("fzf-lua").live_grep_glob()
+          require("fzf-lua").live_grep_native({
+            rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --iglob '!**/tests/**'",
+          })
         end,
         desc = "Grep (root dir)",
+      },
+      {
+        "<leader>\\",
+        function()
+          require("fzf-lua").live_grep_native()
+        end,
+        desc = "Grep (w/ tests)",
       },
     },
   },

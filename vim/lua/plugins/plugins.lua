@@ -30,10 +30,13 @@ return {
         foreground = "saturated",
         dimInactive = true,
         overrides = function(colors)
+          reference_bg = colors.palette.mistBg3
+          if require("kanso")._CURRENT_THEME == "pearl" then
+            reference_bg = colors.palette.pearlBlue1
+          end
           return {
-            -- TODO: make these work for themes other than pearl
-            LspReferenceText = { bg = colors.palette.pearlBlue1 },
-            LspReferenceWrite = { bg = colors.palette.pearlBlue1, underline = true },
+            LspReferenceText = { bg = reference_bg },
+            LspReferenceWrite = { bg = reference_bg, underline = true },
           }
         end,
         colors = {
@@ -496,5 +499,15 @@ return {
     opts = {
       scroll = { enabled = false },
     },
+  },
+
+  {
+    "yarospace/lua-console.nvim",
+    lazy = true,
+    keys = {
+      { "`", desc = "Lua-console - toggle" },
+      { "<leader>`", desc = "Lua-console - attach to buffer" },
+    },
+    opts = {},
   },
 }

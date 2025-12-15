@@ -391,7 +391,7 @@ return {
       {
         "<leader>/",
         function()
-          require("fzf-lua").live_grep_native({
+          require("fzf-lua").live_grep_glob({
             rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --iglob '!**/tests/**'",
           })
         end,
@@ -400,7 +400,7 @@ return {
       {
         "<leader>\\",
         function()
-          require("fzf-lua").live_grep_native()
+          require("fzf-lua").live_grep_glob()
         end,
         desc = "Grep (w/ tests)",
       },

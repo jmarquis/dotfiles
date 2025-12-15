@@ -131,19 +131,16 @@ return {
       local sections = {
         lualine_a = { "mode" },
         lualine_b = {
-          vim.tbl_extend("force", LazyVim.lualine.root_dir(), {
-            padding = 2,
-          }),
+          { "filetype", icon_only = true, separator = "", padding = { left = 2, right = 0 } },
+          { LazyVim.lualine.pretty_path({ length = 4 }), padding = { left = 1, right = 2 } },
         },
         lualine_c = {
-          { "filetype", icon_only = true, separator = "", padding = { left = 2, right = 0 } },
-          { LazyVim.lualine.pretty_path() },
           {
             function()
               return require("nvim-navic").get_location()
             end,
             cond = function()
-              return package.loaded["nvim-navic"] and require("nvim-navic").is_available()
+              return require("nvim-navic").is_available()
             end,
           },
         },

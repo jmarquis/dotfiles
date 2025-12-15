@@ -142,6 +142,7 @@ return {
             cond = function()
               return require("nvim-navic").is_available()
             end,
+            padding = 2,
           },
         },
         lualine_x = {

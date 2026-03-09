@@ -30,7 +30,7 @@ return {
         foreground = "saturated",
         dimInactive = true,
         overrides = function(colors)
-          reference_bg = colors.palette.mistBg3
+          local reference_bg = colors.palette.mistBg3
           if require("kanso")._CURRENT_THEME == "pearl" then
             reference_bg = colors.palette.pearlBlue1
           end
@@ -496,6 +496,13 @@ return {
     "snacks.nvim",
     opts = {
       scroll = { enabled = false },
+      lazygit = {
+        config = {
+          os = {
+            edit = '[ -z ""$NVIM"" ] && (nvim -- {{filename}}) || (nvim --server ""$NVIM"" --remote-send ""q"" && nvim --server ""$NVIM"" --remote {{filename}})',
+          },
+        },
+      },
     },
   },
 

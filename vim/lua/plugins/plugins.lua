@@ -81,15 +81,6 @@ return {
         ruby_lsp = {
           cmd = { "bundle", "exec", "ruby-lsp" },
         },
-
-          settings = {
-            typescript = {
-              tsserver = {
-                maxTsServerMemory = 8192,
-              },
-            },
-          },
-        },
       },
     },
   },

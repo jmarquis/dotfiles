@@ -82,7 +82,16 @@ return {
           cmd = { "bundle", "exec", "ruby-lsp" },
         },
 
-        vstls = {
+        -- vstls = {
+        --   settings = {
+        --     typescript = {
+        --       tsserver = {
+        --         maxTsServerMemory = 24576,
+        --       },
+        --     },
+        --   },
+        -- },
+
           settings = {
             typescript = {
               tsserver = {

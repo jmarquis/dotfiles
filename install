@@ -55,6 +55,11 @@ if [ "$1" == "base" ]; then # set up environment
   ln -s ~/dev/dotfiles/vim/vimrc ~/.config/nvim/init.vim
   ln -s ~/dev/dotfiles/vim/vimrc ~/.vimrc
 
+  # zed
+  mkdir -p ~/.config/zed
+  ln -s ~/dev/dotfiles/zed/settings.json ~/.config/zed/settings.json
+  ln -s ~/dev/dotfiles/zed/keymap.json ~/.config/zed/keymap.json
+
   # fzf and ripgrep
   brew install fzf
   brew install ripgrep

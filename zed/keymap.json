@@ -1,0 +1,155 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      ";": "vim::RepeatFind"
+    }
+  },
+  {
+    "context": "vim_mode == helix_select",
+    "unbind": {
+      ";": "vim::HelixCollapseSelection"
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      ";": "vim::HelixCollapseSelection"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "space": "vim::WrappingRight"
+    }
+  },
+  {
+    // Only match contexts that are explicitly not inserting text. A negated
+    // check like `vim_mode != insert` also matches at the Workspace level,
+    // where vim_mode isn't set, so it fires while typing in insert mode.
+    "context": "(VimControl && !menu) || (ProjectPanel && not_editing) || EmptyPane",
+    "bindings": {
+      ";": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "(vim_mode == normal || vim_mode == visual) && !menu",
+    "bindings": {
+      "'": "outline::Toggle"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g r": "editor::FindAllReferences",
+      "ctrl-o": "pane::GoBack",
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
+      "space /": "pane::DeploySearch",
+      "space k": "pane::DeploySearch",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-k": [
+        "vim::PushDigraph",
+        {}
+      ]
+    }
+  },
+  {
+    "context": "vim_mode == waiting",
+    "unbind": {
+      "ctrl-k": [
+        "vim::PushDigraph",
+        {}
+      ]
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-k": "editor::KillRingCut"
+    }
+  },
+  {
+    "context": "vim_mode == replace",
+    "unbind": {
+      "ctrl-k": [
+        "vim::PushDigraph",
+        {}
+      ]
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-k": [
+        "vim::Literal",
+        [
+          "ctrl-k",
+          "\u000b"
+        ]
+      ]
+    }
+  },
+  {
+    "context": "FileFinder || (FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-x": "pane::SplitDown",
+      "ctrl-v": "pane::SplitRight"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "ctrl-x": "project_panel::OpenSplitHorizontal",
+      "ctrl-v": "project_panel::OpenSplitVertical"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    "context": "menu",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "Picker > Editor",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  }
+]

@@ -1,0 +1,152 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "default_open_behavior": "new_window",
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_status_icon": true
+  },
+  "status_bar": {
+    "show_active_file": true,
+    "line_endings_button": false
+  },
+  "diff_view_style": "unified",
+  "terminal": {
+    "dock": "right",
+  },
+  "agent": {
+    "dock": "right",
+  },
+  "project_panel": {
+    "hide_root": false,
+    "diagnostic_badges": false,
+    "bold_folder_labels": false,
+    "entry_spacing": "comfortable",
+    "hide_gitignore": false,
+    "dock": "left",
+  },
+  "completions": {
+    "lsp_fetch_timeout_ms": 5,
+  },
+  "document_symbols": "on",
+  "document_folding_ranges": "on",
+  "go_to_definition_fallback": "none",
+  "code_lens": "off",
+  "inlay_hints": {
+    "enabled": true,
+  },
+  "show_whitespaces": "trailing",
+  "indent_guides": {
+    "background_coloring": "disabled",
+    "coloring": "indent_aware",
+    "active_line_width": 2,
+    "line_width": 1,
+  },
+  "tab_size": 2,
+  "vim": {
+    "use_smartcase_find": true,
+    "use_system_clipboard": "never",
+  },
+  "which_key": {
+    "enabled": true,
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "code_actions": false,
+    "quick_actions": false,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "scrollbar": {
+    "show": "auto",
+  },
+  "gutter": {
+    "folds": true,
+    "bookmarks": false,
+    "breakpoints": false,
+    "runnables": false,
+  },
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "cursor_animation": {
+    "enabled": false,
+  },
+  "ui_font_family": "MesloLGM Nerd Font",
+  "buffer_line_height": "comfortable",
+  "buffer_font_family": "MesloLGM Nerd Font",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "restore_on_startup": "launchpad",
+  "cli_default_open_behavior": "new_window",
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "base_keymap": "VSCode",
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.7,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "max_tabs": 1,
+  "vim_mode": true,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "system",
+    "light": "Kanso Pearl",
+    "dark": "Kanso Ink",
+  },
+  "format_on_save": "off",
+  "languages": {
+    "Ruby": {
+      "format_on_save": "off",
+      "language_servers": ["ruby-lsp", "rubocop", "herb"],
+    },
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+    "JSX": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+    "TSX": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+    "JSON": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+    "CSS": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+    "SCSS": {
+      "format_on_save": "on",
+      "formatter": "prettier",
+    },
+  },
+}

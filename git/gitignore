@@ -8,3 +8,5 @@ phpcs.xml
 .php-cs-fixer.cache
 .lazy.lua
 .tool-versions
+
+**/.claude/settings.local.json

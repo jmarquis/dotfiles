@@ -7,7 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "default_open_behavior": "new_window",
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "lsp_document_colors": "inlay",
+  "default_open_behavior": "existing_window",
   "title_bar": {
     "show_menus": false,
     "show_branch_status_icon": true
@@ -38,7 +44,7 @@
   "document_symbols": "on",
   "document_folding_ranges": "on",
   "go_to_definition_fallback": "none",
-  "code_lens": "off",
+  "code_lens": "menu",
   "inlay_hints": {
     "enabled": true,
   },
@@ -91,6 +97,10 @@
   "cli_default_open_behavior": "new_window",
   "agent_servers": {
     "claude-acp": {
+      "default_config_options": {
+        "model": "opus",
+        "mode": "auto"
+      },
       "type": "registry",
     },
   },
@@ -112,14 +122,33 @@
   "buffer_font_size": 12.0,
   "theme": {
     "mode": "system",
-    "light": "Kanso Pearl",
-    "dark": "Kanso Ink",
+    "light": "Kanso Pearl (Blurred)",
+    "dark": "Kanso Ink (Blurred)",
+  },
+  "theme_overrides": {
+    "Kanso Ink (Blurred)": {
+      "syntax": {
+        "comment": { "font_style": "normal" },
+        "comment.doc": { "font_style": "normal" },
+        "keyword": { "font_style": "normal" },
+      },
+    },
+    "Kanso Pearl (Blurred)": {
+      "syntax": {
+        "comment": { "font_style": "normal" },
+        "comment.doc": { "font_style": "normal" },
+        "keyword": { "font_style": "normal" },
+      },
+    },
   },
   "format_on_save": "off",
   "languages": {
     "Ruby": {
       "format_on_save": "off",
       "language_servers": ["ruby-lsp", "rubocop", "herb"],
+    },
+    "PHP": {
+      "language_servers": ["phpantom", "!phpactor", "!intelephense", "!phptools", "..."],
     },
     "JavaScript": {
       "format_on_save": "on",

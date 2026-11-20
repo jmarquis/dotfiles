@@ -72,6 +72,15 @@
     }
   },
   {
+    // Jump list from inside project search, including the query input, where
+    // vim bindings don't apply.
+    "context": "ProjectSearchView || ProjectSearchBar || (ProjectSearchBar > Editor)",
+    "bindings": {
+      "ctrl-o": "pane::GoBack",
+      "ctrl-i": "pane::GoForward"
+    }
+  },
+  {
     "context": "vim_mode == insert",
     "unbind": {
       "ctrl-k": [
@@ -143,6 +152,20 @@
     "bindings": {
       "ctrl-j": "menu::SelectNext",
       "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "Editor && (showing_completions || showing_code_actions)",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "enter": "editor::Newline",
+      "tab": "editor::ConfirmCompletion"
     }
   },
   {

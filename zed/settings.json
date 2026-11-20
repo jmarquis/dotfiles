@@ -29,6 +29,7 @@
   },
   "agent": {
     "dock": "right",
+    "thinking_display": "always_collapsed",
   },
   "project_panel": {
     "hide_root": false,
@@ -44,7 +45,7 @@
   "document_symbols": "on",
   "document_folding_ranges": "on",
   "go_to_definition_fallback": "none",
-  "code_lens": "menu",
+  "code_lens": "off",
   "inlay_hints": {
     "enabled": true,
   },
@@ -148,6 +149,10 @@
       "language_servers": ["ruby-lsp", "rubocop", "herb"],
     },
     "PHP": {
+      "show_whitespaces": "trailing",
+      "format_on_save": "modifications",
+      "preferred_line_length": 120,
+      "tab_size": 4,
       "language_servers": ["phpantom", "!phpactor", "!intelephense", "!phptools", "..."],
     },
     "JavaScript": {
